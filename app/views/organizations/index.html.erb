@@ -1,0 +1,38 @@
+
+<%= render "/parts/mainnav" %>
+<div class="container-fluid">
+
+<h1 class="page-header">all organizations
+<div class="pull-right">
+  <%= link_to 'NEW ORGANIZATION', new_organization_path, class: "btn btn-default" %>
+</div>  
+</h1> 
+
+<% @organizations.each do |organization| %>
+  <div class="row info2"> <!-- add ".organization" for flickering meta1 line -->
+    <div class="col-md-3">
+     <strong> <%= link_to organization.name, organization %> </strong>
+      <div class="subtext"><%= organization.content %> </div> 
+      <% @organizations.each do |organization| %>
+      <div class="subtext"> User id: BROKEN!! <%= organization.user_id %> </div> 
+      <% end %>
+
+    </div>    
+  </div> 
+
+  <div class="row info2"> 
+    <div class="col-md-3">
+      <span class="admin"> 
+        <div class="meta2">
+            <%= link_to "joined " + time_ago_in_words(organization.created_at) + " ago", organization %> 
+            | <%= link_to "edit", edit_organization_path(organization)%> |
+            <%= link_to "delete", organization, method: :delete, data: { confirm: 'Are you sure?' } %> 
+         </div> 
+      </span> 
+    </div> 
+  </div>  
+
+
+<% end %>
+
+</div>

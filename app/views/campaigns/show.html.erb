@@ -1,0 +1,15 @@
+<%= render "/parts/mainnav" %>
+
+<p>
+  <strong>Content:</strong>
+  <%= @campaign.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @campaign.user.first_name  %>
+</p>
+
+<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
+<%= link_to 'Back', campaigns_path %>
+

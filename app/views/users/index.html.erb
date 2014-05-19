@@ -1,0 +1,24 @@
+<%= render "/parts/mainnav" %>
+<div class="container-fluid">
+	<h1>Users... just to make it easy in development</h1>
+	<div class="container-fluid">
+	
+	<% if signed_in? %>
+	Current User: <%= current_user.full_name %> </br></br>
+	<% @users.each do |user| %>
+		<div class="row">
+		  <%= user.id %> |
+		  <%= user.full_name %> |
+		  <%= link_to 'Profile', profile_page_path(user.id) %>
+		 	 <% if user == current_user %>
+			  |	<%= link_to 'Edit Account', '/users/edit' %> 
+			 <% end %> <!-- end of current_user -->
+
+		</div>
+		
+	<% end %> <!-- end of users.each -->
+	<% end %> <!--end of signded_in? -->
+	
+	</div>
+</div>
+

@@ -1,0 +1,16 @@
+
+<div class="col-md-14">
+
+<div class="panel-body">
+
+  <% if @programs %>
+	<% @programs.each do |program| %>
+		<div class="well">
+			<%= link_to program.prog_name, program_path %> </br>
+		</div>  
+  	<% end %> 
+  <% end %>
+
+	
+</div>  
+</div>  

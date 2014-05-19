@@ -1,0 +1,99 @@
+<%= render "/parts/mainnav" %>
+
+<div class="container-fluid">
+<div class="row">
+
+<!-- BEGIN PROFILE DETAILS -->
+    <div class="col-md-6">
+  	<div class="panel-body">
+  	  <div class="col-md-1">
+		<%= image_tag "profile_pic.jpg", alt: "profile pic?",
+										 id: "profile_pic",
+										 size: "80x80",
+										 class: "img-circle" %>  		
+  	  </div>	
+  	  <div class="col-md-8 col-md-offset-1">
+		<h1><%= @user.full_name %></h1>
+		<h4><%= @user.job_title %> 
+		at <%= link_to @user.organization.name, organization_path(@user.organization.id) %> </h4>
+		<p> <button type="button" class="btn btn-primary btn-xs">message</button>
+		  <button type="button" class="btn btn-primary btn-xs">+ follow</button> </p>
+  	  </div>
+ 	</div><!-- end panel-body -->
+
+<div class="col-md-10 col-md-offset-1">
+ 	<div class="panel-body">
+ 		
+ 		<h4>Expertise</h4>
+ 		<p>placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, </p>
+ 		
+ 	</div>
+
+ 	<div class="panel-body">
+ 		<h4>Background</h4>
+ 		<p>placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, </p>
+ 	</div>	
+
+ 	<div class="panel-body">
+ 		<h4><%= @user.organization.name %>'s Collaborations</h4>
+ 		<p>placeholder text, blach, blah</p>
+ 	</div>	
+
+ 	<div class="panel-body">
+ 		<h4><%= @user.organization.name %>'s Networks</h4>
+ 		<p>placeholder text, blach, blah</p>
+ 	</div>
+
+ 	<div class="panel-body">
+ 		<h4>Following</h4>
+ 		<p>placeholder text, blach, blah</p>
+ 	</div>	
+
+ 	<div class="panel-body">
+ 		<h4>Followers</h4>
+ 		<p>placeholder text, blach, blah</p>
+ 	</div>		
+</div>
+
+    </div><!-- end col-md-6 -->
+<!-- END PROFILE DETAILS -->
+
+<!-- BEGIN LOOP -->
+	<div class="col-md-5 ">
+	</br>
+	</br>
+	</br>	
+	  <h2><%= @user.first_name %>'s Loop</h2>	
+		<% if @campaigns %>
+		  <% @campaigns.each do |campaign| %>
+			<div class="well">
+			  <%= campaign.content %> </br>
+			  <%= link_to time_ago_in_words(campaign.created_at), campaign_path(campaign) %> ago,
+			  by <%= campaign.user.full_name %>
+			</div>	
+		  <% end %>	
+
+		  <% @campaigns.each do |campaign| %>
+			<div class="well">
+			  <%= campaign.content %> </br>
+			  <%= link_to time_ago_in_words(campaign.created_at), campaign_path(campaign) %> ago,
+			  by <%= campaign.user.full_name %>
+			</div>	
+		  <% end %>	
+
+		  <% @campaigns.each do |campaign| %>
+			<div class="well">
+			  <%= campaign.content %> </br>
+			  <%= link_to time_ago_in_words(campaign.created_at), campaign_path(campaign) %> ago,
+			  by <%= campaign.user.full_name %>
+			</div>	
+		  <% end %>	
+		
+
+
+    <% end %>
+	</div> 
+<!-- END LOOP -->
+
+</div><!-- end row -->
+</div><!-- end container-fluid -->

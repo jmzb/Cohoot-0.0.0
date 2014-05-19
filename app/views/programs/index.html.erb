@@ -1,0 +1,30 @@
+<%= render "/parts/mainnav" %>
+<h1>Listing programs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prog name</th>
+      <th>Prog obj</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programs.each do |program| %>
+      <tr>
+        <td><%= program.prog_name %></td>
+        <td><%= program.prog_obj %></td>
+        <td><%= link_to 'Show', program %></td>
+        <td><%= link_to 'Edit', edit_program_path(program) %></td>
+        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Program', new_program_path %>

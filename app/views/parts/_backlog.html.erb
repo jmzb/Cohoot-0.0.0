@@ -1,0 +1,216 @@
+
+<div class="container-fluid">
+<div class="row">	
+<div class="col-md-4">
+
+<h2>Major Components</h2>
+<p>
++ Databases and Tables</br>
+___Users</br>
+_______follow</br>
+_______Tags?</br>
+___Unassociated users?</br>
+_______follow?</br>
+_______Tags?</br>
+___Admin</br>
+___Organizations</br>
+_______follow</br>
+_______Tags?</br>
+___Programs</br>
+_______follow</br>
+_______Tags?</br>
+___Locations</br>
+___Neighborhoods</br>
+_______follow</br>
+___Regions</br>
+_______follow</br></br>
+
+****** How do we handle these tools? What are the problems & goals? </br>
+___Collaborations</br>
+_______join & follow</br>
+_______Tags?</br>
+___Networks</br>
+_______join & follow</br>
+_______Tags?</br></br>
+
+****** Content posting </br>
+___Campaigns</br>
+___Posts</br>
+___Messages?</br>
+___Blogs?</br>
+___Events/Calendar?</br>
+___Capacity/ Openings?</br></br>
+
+****** Core workflow </br>
+___Searches</br>
+___Referrals</br>
+______follow?</br></br>
+
+***** How do we handle rankings and games? What's the problem this is solving? What are the goals here? </br>
+___Activity?</br>
+___Trust Rankings?</br>
+___Badges?</br>
+****** How do we hide sub-sector complexity to make it easy and intuitive?</br>
+___Cause Sub-sectors?</br>
+___Identity Sub-sectors?</br>
+______follow</br>
+___Size-Sectors?</br>
+______follow</br></br>
+
+
++ Views </br>
+___design pages </br>
+___add profile pictures </br>
+___javascript events </br>
+.........notification behaviors </br>
+.........behavior on profile pages: </br></br>
+
++ Sign-up flows/ behaviors </br>
+____Quick, new user </br>
+____New organization, new user </br>
+____New programs, new user </br>
+____Update organization, new user </br>
+____Update programs, new user </br>
+____Quick, associations, new user </br></br>
+
++ Searching and basic mapping behaviors </br>
+____Geokit gem </br>
+............ implement geocoding </br>
+____Geokit-rails gem </br>
+............ distance widget </br>
+____Elasticsearch </br>
+............ main search logged out </br>
+............ main search logged in </br>
+............ information type search (i.e. people, oroganizations, collaborations, etc.) </br>
+____landing page </br>
+____results page logged out </br>
+____results page logged in </br>
+____illiterate search </br></br>
+
++ Following behaviors </br>
+**** How do we handle following neighborhoods?</br>
+____follow users </br>
+____follow organizations </br>
+____follow collaborations </br>
+____join collaborations </br>
+____follow networks </br>
+____join networks </br>
+____follow neighborhoods </br>
+____follow regions </br>
+____follow Cause sub-sectors? </br>
+____follow Size sub-sectors? </br>
+____follow Identity sub-sectors? </br></br>
+
++ Messaging behaviors & rewards </br>
+____message between/ among users </br>
+____message user to organization </br>
+____message user to collaboration </br>
+____message within organization? </br>
+____messages within collaborations </br>
+____messages within networks </br></br>
+
++ Posting behaviors & rewards </br>
+____organization information </br>
+____program information </br>
+____user information </br>
+____campaigns </br>
+____micro-posts </br>
+____blog-posts </br>
+____capacity/ openings information </br>
+____events </br></br>
+
++ Calendar behavior </br></br>
+
++ Referral behavior </br></br>
+
++ Paymnents/ subscriptiosn behavior </br></br>
+
++ Transactional Email behavior </br></br>
+
++ Webscraping database </br></br>
+
++ Chron jobs </br></br>
+
++ Network visualization behavior </br></br>
+
++ Network communication behavior </br></br>
+
++ Search engine + mapping (based on elasticsearch, etc.)</br>
+ rabbitmq ?</br>
+http://dev.mikamai.com/post/85901585484/elasticsearch-on-rails-a-primer</br>
+http://asquera.de/opensource/2012/11/25/elasticsearch-pre-flight-checklist/</br>
+http://www.reddit.com/r/elasticsearch/comments/1xvif2/knowledge_level_required_for_elasticsearch/</br></br>
+
++ Reccomendation engine (based on elasticsearch) </br></br>
+
++ Help pages </br></br>
+
++ Auto login </br></br>
+
++ Integrate social networks/ other services </br></br>
+
++ Independent user </br></br>
+
++ Directions and other planning tools </br></br>
+</p> </br></br>
+</div>
+
+<div class="col-md-4">	
+
+<h2>Notes</h2>
+<p>
+<strong>Current bugs/ issues</strong></br>
+1) edit user information gets an error "uninitialized constant User::ParameterSanitizer"</br>
+	-- probaly due to a crappy scoping job trying to make is so that only the current user's info can be edited</br>
+
+</br>
+<strong>Current backlog goals</strong></br>
+=======JOIN TABLE======</br>
+<del> 1) create join table (relationships) </del> </br>
+<del> 2) set up relationships and associations in the mode </del> </br>
+<del> 3) set up controller </del> </br>
+4) create interface </br>
+5) desplay followers in the profile </br>
+==============</br>
+*start going to Ruby Meetup!!!</br>
+*check/ build sign-up validations </br>
+<del> *fix profile pages, and links to profile pages... </del></br>
+*fix/ understand tests </br>
+*understand join table better </br>
+*continue plowing through the treehouse lessons & finish intermediate section </br>
+*apply join tables to the other appropirate models </br>
+*make <del> "my organization, my profile, </del> my programs" links </br>
+*set this up on github...</br>
+*move on to & finish advanced treehouse lessons	 </br></br>
+
+
+<strong> Join Tables </strong></br>
+1) make a "follow" table with two columns: a follower column, pointing to the "subject" user, and a following column pointing to the "object" user... yes, I just made up those terms.
+... My "that following a user works" in /test/model/user_test.rb is currently failing and I don't know why...WHY? It might be because of the messed up naming convention and I still don't have all my files right... also I should go back through and understand the database relationships bettter, and then update/duplication for the different models and different types of following behavior (which should have their own rules)
+</p>
+
+<p>
+<strong> Writing Tests </strong></br>
+Tests are written as code blocks, and have a few parts: 1) a descriptive name, 2) a verb/ action </br>
+
+<strong> Aethetics </strong></br>
+Homepage: drop the box for a single line and a blinking curser, change the submit button to a shape that fits themeatically with the logo, label it "go"... eventually as you type below will pop up suggestions mirroring your text. </br></br>
+Icon design????????
+
+<strong> How are we going to handle national organizations? </strong></br></br>
+<strong> How are we going to handle national organizations with regional offices? </strong></br></br>
+<strong> How are we going to handle international organizations based in the US? </strong></br></br>
+<strong> How are we going to handle government organizations/ programs? </strong></br></br>
+<strong> How are we going to handle highly complex organizations like hospital systems? </strong></br></br>
+<strong> How are we going to handle backbone orgs/ foundations? </strong></br></br>
+<strong> How are we going to handle social businesses? </strong></br></br>
+<strong> How are we going to handle policy/ advocacy/ political organizations? </strong></br></br>
+<strong> How are we going to handle unassociated users? </strong></br>
+_______ Unassociated users should be handled like potential clients</br></br>
+<Strong> What happens to the information when a user is distroyed? </strong></br>
+_______ Or how does data get stored/ changed generally? </br></br>
+</p>
+
+
+</div>
+</div>

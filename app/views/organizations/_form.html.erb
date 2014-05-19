@@ -1,0 +1,48 @@
+<div class="container-fluid">
+
+
+
+<%= simple_form_for @organization, 
+    defaults: { input_html: { :class => 'form-horizontal span6 form-control' } } do |f| %>
+ 
+  <% if @organization.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this status from being saved:</h2>
+      <ul>
+      <% @organization.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="row info">
+    <%= f.input :name,  placeholder: 'Organization Name', label: 'Organization'  %>
+  </div>
+
+  <div class="row info">
+    <%= f.input :user_id,  placeholder: 'User ID', label: 'User ID'  %>
+  </div>
+
+  <div class="row info">
+    <%= f.input :content,  placeholder: 'Mission', label: 'Mission'  %>
+  </div>
+
+  <div class="row info">
+    <%= f.input :website,  placeholder: 'website url', label: 'Website'  %>
+  </div>
+
+  <div class="row info">
+    <%= f.input :phoneA,  placeholder: 'Main Phone Number', label: 'Main Phone Number'  %>
+  </div>
+
+  <div class="row info">
+    <%= f.input :fax,  placeholder: 'Main Fax Number', label: 'Main Fax Number'  %>
+  </div>
+
+  <%= f.button :submit %>
+<% end %>
+
+</div>

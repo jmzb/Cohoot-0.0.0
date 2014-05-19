@@ -1,0 +1,19 @@
+</br>
+</br>
+</br>
+</br>
+
+
+
+
+<% if @locations %>
+<% @locations.each do |location| %>
+<div class="well">
+<%= location.loc_name %> </br>
+<%= location.loc_street %> </br>
+<%= location.loc_city %> </br>
+<%= location.loc_state %> </br>
+<%= location.loc_zip %> </br>
+</div>	
+<% end %>	
+<% end %>

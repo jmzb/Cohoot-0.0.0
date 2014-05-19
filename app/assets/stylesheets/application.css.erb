@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+.bkgnd1 { 
+	background-image: url(<%= asset_path 'tree_lite.png' %>); 
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.navlogo {
+ height: 60px;	
+}
+
+.map-default {
+ max-height: 400px;	
+ max-width: 400px;
+}
+
+.search-pad{
+	padding-top: 100px;
+}
+
+.search-bar{
+	width: 200%;
+}
+.vert-box {
+	height: 400px;
+	position: relative;
+	top: 60%;
+	transform: translateY(40%);
+}
+
+.btn-third {
+  display: block;
+  width: 32%;
+  padding-right: 0;
+  padding-left: 0;
+}

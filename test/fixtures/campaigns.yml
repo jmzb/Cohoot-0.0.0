@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tstmp: 2
+  created_at: 2
+  updated_at: 2
+  content: First test user
+  user_id: 1
+
+two:
+  tstmp: 3
+  created_at: 3
+  updated_at: 3
+  content: Second test user
+  user_id: 2
+
+three:
+  tstmp: 4
+  created_at: 4
+  updated_at: 4
+  content: Third test user
+  user_id: 3

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cohoot Beta</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= yield %>
+<% if flash[:notice] %>
+    <div class="alert">
+      <%= flash[:notice] %>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    </div>
+  <% end %>
+</body>
+</html>

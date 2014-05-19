@@ -1,0 +1,20 @@
+
+
+testUser1:
+ first_name: Spaceman
+ last_name: Airosol
+ email: spaceman@spaceman.com
+ encrypted_password: password
+
+testUser2:
+ first_name: Libby
+ last_name: Mouse
+ email: libby@mouse.com
+ encrypted_password: password
+
+
+testUser3:
+ first_name: James
+ last_name: Bear
+ email: james@spaceman.com
+ encrypted_password: password
