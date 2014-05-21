@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 #join-tables...verb-like database relationships...
   has_many :follow_users
   has_many :followers, through: :follow_users
-  has_many :followed, through: :follow_users
+  has_many :followeds, through: :follow_users
 
   # has_many :follow_orgs
   # has_many :following_orgs, through: :follow_orgs

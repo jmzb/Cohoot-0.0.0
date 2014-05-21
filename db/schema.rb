@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515190511) do
+ActiveRecord::Schema.define(version: 20140521183839) do
 
   create_table "campaigns", force: true do |t|
     t.text     "content"
@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 20140515190511) do
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id"
 
   create_table "follow_users", force: true do |t|
-    t.integer  "follower_id"
+    t.integer  "user_id"
     t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "follow_users", ["follower_id", "followed_id"], name: "index_follow_users_on_follower_id_and_followed_id"
+  add_index "follow_users", ["user_id", "followed_id"], name: "index_follow_users_on_user_id_and_followed_id"
 
   create_table "locations", force: true do |t|
     t.string   "loc_name"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140515190511) do
     t.string   "loc_city"
     t.string   "loc_state"
     t.integer  "loc_zip"
+    t.string   "loc_phone"
+    t.string   "loc_fax"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "org_id"
@@ -52,18 +54,8 @@ ActiveRecord::Schema.define(version: 20140515190511) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "addressA"
-    t.string   "cityA"
-    t.string   "stateA"
-    t.string   "zipA"
-    t.string   "addressB"
-    t.string   "cityB"
-    t.string   "stateB"
-    t.string   "zipB"
     t.string   "website"
-    t.string   "phoneA"
-    t.string   "phoneB"
-    t.string   "fax"
+    t.string   "main_access"
     t.integer  "user_id"
   end
 

@@ -36,6 +36,11 @@ gem 'devise'
 gem 'nestive', '~> 0.5'
 gem 'data_migrate'
 
+#a set of gems to handle foreign keys-not currently implemented
+gem 'foreigner'
+gem 'immigrant'
+gem 'sqlserver-foreigner'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
