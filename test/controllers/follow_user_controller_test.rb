@@ -23,7 +23,7 @@ class FollowUsersControllerTest < ActionController::TestCase
 #ERROR
   		should "should set a flash error if the followed_id params is missing" do 
   			get :new, {}
-  			assert_equal "Uh oh, we couldn't find the account you were looking to follow.", flash[:error]
+  			assert_equal "Uh oh, we couldn't find the person you were looking to follow.", flash[:error]
   		end
 
 #ERROR
