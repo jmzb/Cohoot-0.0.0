@@ -4,17 +4,17 @@ testUser1:
  first_name: Spaceman
  last_name: Airosol
  email: spaceman@spaceman.com
- encrypted_password: password
+ encrypted_password: $2a$10$kHqsiS4ilvvVN6kKv6.mYeXvq3jCqotm6eoCeho4K6eaNpCuUcL6K
 
 testUser2:
  first_name: Libby
  last_name: Mouse
  email: libby@mouse.com
- encrypted_password: password
+ encrypted_password: $2a$10$kHqsiS4ilvvVN6kKv6.mYeXvq3jCqotm6eoCeho4K6eaNpCuUcL6K
 
 
 testUser3:
  first_name: James
  last_name: Bear
  email: james@spaceman.com
- encrypted_password: password
+ encrypted_password: $2a$10$kHqsiS4ilvvVN6kKv6.mYeXvq3jCqotm6eoCeho4K6eaNpCuUcL6K

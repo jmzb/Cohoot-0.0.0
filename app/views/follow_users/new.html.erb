@@ -1,11 +1,13 @@
+Testing page... if nothing displays below then there's no @followed getting passed </br></br>
+
 <% if @followed %> 
 
 <h1>You are about to follow: <%= @followed.full_name %></h1>
 
 <%= form_for @follow_user, method: :post do |form| %>
 	<div class= "form form-actions">
-		<%= form.hidden_field :followed_id, value: @followed %>
-		<%= form.hidden_field :follower_id, value: @follower %>
+		<%= hidden_field_tag :followed_id, @followed.id %>
+		<%= hidden_field_tag :follower_id, @follower.id %>
 		<%= submit_tag "follow", class: 'btn btn-default' %>
 	</div>
 

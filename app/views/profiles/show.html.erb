@@ -10,15 +10,18 @@
 		<%= image_tag "profile_pic.jpg", alt: "profile pic?",
 										 id: "profile_pic",
 										 size: "80x80",
-										 class: "img-circle" %>  		
+										 class: "img-circle" %>  								 		
   	  </div>	
   	  <div class="col-md-8 col-md-offset-1">
-		<h1><%= @user.full_name %></h1>
+		<h1><%= @user.full_name %>
+			<button type="button" class="btn btn-default btn-xs">	
+				<%= link_to "follow", new_follow_user_path(followed_id: @user) %>
+			</button>	
+		</h1>
 		<h4><%= @user.job_title %> 
 		at <%= link_to @user.organization.name, organization_path(@user.organization.id) %> </h4>
-		<p> <button type="button" class="btn btn-primary btn-xs">message</button>
-			<%= link_to "follow", follow_user_path(@user.id) %>
-		 <!-- <button type="button" class="btn btn-primary btn-xs">+ follow</button> -->
+		<p> 
+		
 		</p>
   	  </div>
  	</div><!-- end panel-body -->
@@ -27,33 +30,33 @@
  	<div class="panel-body">
  		
  		<h4>Expertise</h4>
- 		<p>placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, </p>
+ 		
  		
  	</div>
 
  	<div class="panel-body">
  		<h4>Background</h4>
- 		<p>placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, placeholder text, blach, blah, </p>
+ 		
  	</div>	
 
  	<div class="panel-body">
  		<h4><%= @user.organization.name %>'s Collaborations</h4>
- 		<p>placeholder text, blach, blah</p>
+ 	
  	</div>	
 
  	<div class="panel-body">
  		<h4><%= @user.organization.name %>'s Networks</h4>
- 		<p>placeholder text, blach, blah</p>
+ 	
  	</div>
 
  	<div class="panel-body">
  		<h4>Following</h4>
- 		<p>placeholder text, blach, blah</p>
+ 		
  	</div>	
 
  	<div class="panel-body">
  		<h4>Followers</h4>
- 		<p>placeholder text, blach, blah</p>
+ 	
  	</div>		
 </div>
 
