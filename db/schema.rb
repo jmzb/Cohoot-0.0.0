@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521183839) do
+ActiveRecord::Schema.define(version: 20140523005925) do
 
   create_table "campaigns", force: true do |t|
     t.text     "content"
@@ -23,13 +23,21 @@ ActiveRecord::Schema.define(version: 20140521183839) do
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id"
 
+  create_table "data_migrations", id: false, force: true do |t|
+    t.string "version", null: false
+  end
+
+  add_index "data_migrations", ["version"], name: "unique_data_migrations", unique: true
+
   create_table "follow_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
+  add_index "follow_users", ["state"], name: "index_follow_users_on_state"
   add_index "follow_users", ["user_id", "followed_id"], name: "index_follow_users_on_user_id_and_followed_id"
 
   create_table "locations", force: true do |t|
@@ -38,8 +46,6 @@ ActiveRecord::Schema.define(version: 20140521183839) do
     t.string   "loc_city"
     t.string   "loc_state"
     t.integer  "loc_zip"
-    t.string   "loc_phone"
-    t.string   "loc_fax"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "org_id"
@@ -54,8 +60,18 @@ ActiveRecord::Schema.define(version: 20140521183839) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "addressA"
+    t.string   "cityA"
+    t.string   "stateA"
+    t.string   "zipA"
+    t.string   "addressB"
+    t.string   "cityB"
+    t.string   "stateB"
+    t.string   "zipB"
     t.string   "website"
-    t.string   "main_access"
+    t.string   "phoneA"
+    t.string   "phoneB"
+    t.string   "fax"
     t.integer  "user_id"
   end
 

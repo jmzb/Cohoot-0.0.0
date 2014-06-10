@@ -1,0 +1,27 @@
+  <div class="row">
+  	<div class="panel-body">
+  	  <div class="col-md-1">
+		<%= image_tag "profile_pic.jpg", alt: "profile pic?",
+										 id: "profile_pic",
+										 size: "80x80",
+										 class: "img-circle" %>
+
+		<% if @user != current_user %>
+			<% if @followers.include?(current_user) %>					 
+				<%= link_to "unfollow", root_path %>
+			<% else %>
+				<%= link_to "follow", new_follow_user_path(followed_id: @user) %>
+			<% end %>	
+		<% end %>
+
+  	  </div>	
+  	  <div class="col-md-9 col-md-offset-1">  
+		<h1><%= @user.full_name %> </h1>	
+		<h4><%= @user.job_title %> 
+		at <%= link_to @user.organization.name, organization_path(@user.organization.id) %> </h4>
+		<p> 
+		
+		</p>
+  	  </div>
+ 	</div><!-- end panel-body -->
+ 	   </div>

@@ -34,6 +34,10 @@ gem 'simple_form'
 gem 'devise'
 
 gem 'nestive', '~> 0.5'
+
+gem 'state_machine'
+
+# adds data migration functionality to rake
 gem 'data_migrate'
 
 #a set of gems to handle foreign keys-not currently implemented
@@ -50,6 +54,7 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'shoulda-context'
+  gem 'factory_girl_rails'
 end
 
 
