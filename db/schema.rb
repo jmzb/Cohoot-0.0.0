@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140523005925) do
+ActiveRecord::Schema.define(version: 20140612211256) do
 
   create_table "campaigns", force: true do |t|
     t.text     "content"
@@ -77,14 +77,31 @@ ActiveRecord::Schema.define(version: 20140523005925) do
 
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id"
 
+  create_table "program_activities", force: true do |t|
+    t.string   "activity_name"
+    t.text     "activity_short_desc"
+    t.integer  "program_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "program_activities", ["program_id"], name: "index_program_activities_on_program_id"
+
   create_table "programs", force: true do |t|
     t.string   "prog_name"
     t.text     "prog_obj"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
+    t.text     "ideal_candidate"
+    t.text     "initial_condition"
+    t.text     "goal_condition"
+    t.string   "next_step"
+    t.integer  "org_id"
+    t.string   "program_capacity"
   end
 
+  add_index "programs", ["org_id"], name: "index_programs_on_org_id"
   add_index "programs", ["organization_id"], name: "index_programs_on_organization_id"
 
   create_table "users", force: true do |t|

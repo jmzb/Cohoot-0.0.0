@@ -9,14 +9,12 @@
 </h1> 
 
 <% @organizations.each do |organization| %>
-  <div class="row info2"> <!-- add ".organization" for flickering meta1 line -->
+  <div class="row info2"> 
     <div class="col-md-3">
      <strong> <%= link_to organization.name, organization %> </strong>
-      <div class="subtext"><%= organization.content %> </div> 
-      <% @organizations.each do |organization| %>
-      <div class="subtext"> User id: BROKEN!! <%= organization.user_id %> </div> 
-      <% end %>
-
+     <div class="subtext">
+        <%= organization.content %>  </br> 
+     </div> 
     </div>    
   </div> 
 
@@ -31,7 +29,7 @@
       </span> 
     </div> 
   </div>  
-
+</br> </br> 
 
 <% end %>
 

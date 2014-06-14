@@ -165,18 +165,72 @@ http://www.reddit.com/r/elasticsearch/comments/1xvif2/knowledge_level_required_f
 <h2>Notes</h2>
 <p>
 <strong>Current bugs/ issues</strong></br>
-1) edit user information gets an error "uninitialized constant User::ParameterSanitizer"</br>
-	-- probaly due to a crappy scoping job trying to make is so that only the current user's info can be edited</br>
 
 </br>
 <strong>Current backlog goals</strong></br>
-=======JOIN TABLE======</br>
-<del> 1) create join table (relationships) </del> </br>
-<del> 2) set up relationships and associations in the mode </del> </br>
-<del> 3) set up controller </del> </br>
-4) create interface </br>
-5) desplay followers in the profile </br>
-==============</br></br>
+****GET HELP TO FIX TESTS!!!!</br>
+===============</br></br>
+TO INITIAL WORKING PROTOTYPE:</br>
+** active record basics... </br>
+** display followed campaigns in loop</br>
+** add experience tags</br>
+** add a background field</br>
+** add profile pictures</br>
+** fix up programs </br>
+** add the search system</br>
+** add the mapping system</br>
+</br>
+===============</br>
+**complete intermediate ruby section</br>
+**add state to User model for associating with an organization</br>
+----set the org_state to the organization's id (int)... make sure the org id is at least three digits</br>
+----this will allow for passive following within an org.</br>
+----follow user state to incude: semiconnected, active, mutual, passive_org, pause_org, passive_neighb, passive_collab</br>
+**add state to Organization for stub/ active </br>
+**implement draper gem--for object decorations... </br>
+**implement a quick tutorial version AJAX/ javascript</br>
+**blitz javascript in 1 day</br>
+**add a little more AJAX and javascript to the application</br>
+**watch image uploads, blitz Active Record Basics</br>
+**begin advanced tutorial</br>
+</br>
+==================</br>
+*start going to Ruby Meetup!!!</br>
+*check/ build sign-up validations </br>
+<del> *fix profile pages, and links to profile pages... </del></br>
+*fix/ understand tests </br>
+*continue plowing through the treehouse lessons & finish intermediate section </br>
+*apply join tables to the other appropirate models </br>
+*make <del> "my organization, my profile, </del> my programs" links </br>
+*move on to & finish advanced treehouse lessons	 </br></br>
+
+
+<strong> Join Tables </strong></br>
+1) make a "follow" table with two columns: a follower column, pointing to the "subject" user, and a following column pointing to the "object" user... yes, I just made up those terms.
+... My "that following a user works" in /test/model/user_test.rb is currently failing and I don't know why...WHY? It might be because of the messed up naming convention and I still don't have all my files right... also I should go back through and understand the database relationships bettter, and then update/duplication for the different models and different types of following behavior (which should have their own rules)
+</p>
+
+<p>
+<strong> Writing Tests </strong></br>
+Tests are written as code blocks, and have a few parts: 1) a descriptive name, 2) a verb/ action </br>
+
+<strong> Aethetics </strong></br>
+Homepage: drop the box for a single line and a blinking curser, change the submit button to a shape that fits themeatically with the logo, label it "go"... eventually as you type below will pop up suggestions mirroring your text. </br></br>
+Icon design????????
+
+<strong> How are we going to handle national organizations? </strong></br></br>
+<strong> How are we going to handle national organizations with regional offices? </strong></br></br>
+<strong> How are we going to handle international organizations based in the US? </strong></br></br>
+<strong> How are we going to handle government organizations/ programs? </strong></br></br>
+<strong> How are we going to handle highly complex organizations like hospital systems? </strong></br></br>
+<strong> How are we going to handle backbone orgs/ foundations? </strong></br></br>
+<strong> How are we going to handle social businesses? </strong></br></br>
+<strong> How are we going to handle policy/ advocacy/ political organizations? </strong></br></br>
+<strong> How are we going to handle unassociated users? </strong></br>
+_______ Unassociated users should be handled like potential clients</br></br>
+<Strong> What happens to the information when a user is distroyed? </strong></br>
+_______ Or how does data get stored/ changed generally? </br></br>
+</p>
 
 =======STATE MACHINE===</br>
 https://github.com/pluginaweek/state_machine</br></br>
@@ -269,46 +323,6 @@ http://www.railstips.org/blog/archives/2009/05/11/class-and-instance-methods-in-
 --then they create another follow_user for the followed with a "class method" </br>
 I think I need to do this to 1) display all of the followers of a particular user </br>
 and 2) allow a user to block another user from following them </br>
-
-
-*start going to Ruby Meetup!!!</br>
-*check/ build sign-up validations </br>
-<del> *fix profile pages, and links to profile pages... </del></br>
-*fix/ understand tests </br>
-*understand join table better </br>
-*continue plowing through the treehouse lessons & finish intermediate section </br>
-*apply join tables to the other appropirate models </br>
-*make <del> "my organization, my profile, </del> my programs" links </br>
-*set this up on github...</br>
-*move on to & finish advanced treehouse lessons	 </br></br>
-
-
-<strong> Join Tables </strong></br>
-1) make a "follow" table with two columns: a follower column, pointing to the "subject" user, and a following column pointing to the "object" user... yes, I just made up those terms.
-... My "that following a user works" in /test/model/user_test.rb is currently failing and I don't know why...WHY? It might be because of the messed up naming convention and I still don't have all my files right... also I should go back through and understand the database relationships bettter, and then update/duplication for the different models and different types of following behavior (which should have their own rules)
-</p>
-
-<p>
-<strong> Writing Tests </strong></br>
-Tests are written as code blocks, and have a few parts: 1) a descriptive name, 2) a verb/ action </br>
-
-<strong> Aethetics </strong></br>
-Homepage: drop the box for a single line and a blinking curser, change the submit button to a shape that fits themeatically with the logo, label it "go"... eventually as you type below will pop up suggestions mirroring your text. </br></br>
-Icon design????????
-
-<strong> How are we going to handle national organizations? </strong></br></br>
-<strong> How are we going to handle national organizations with regional offices? </strong></br></br>
-<strong> How are we going to handle international organizations based in the US? </strong></br></br>
-<strong> How are we going to handle government organizations/ programs? </strong></br></br>
-<strong> How are we going to handle highly complex organizations like hospital systems? </strong></br></br>
-<strong> How are we going to handle backbone orgs/ foundations? </strong></br></br>
-<strong> How are we going to handle social businesses? </strong></br></br>
-<strong> How are we going to handle policy/ advocacy/ political organizations? </strong></br></br>
-<strong> How are we going to handle unassociated users? </strong></br>
-_______ Unassociated users should be handled like potential clients</br></br>
-<Strong> What happens to the information when a user is distroyed? </strong></br>
-_______ Or how does data get stored/ changed generally? </br></br>
-</p>
 
 
 </div>

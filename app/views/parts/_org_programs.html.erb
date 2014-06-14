@@ -6,7 +6,7 @@
   <% if @programs %>
 	<% @programs.each do |program| %>
 		<div class="well">
-			<%= link_to program.prog_name, program_path %> </br>
+			<%= link_to program.prog_name, program_path(program.id) %> </br>
 		</div>  
   	<% end %> 
   <% end %>

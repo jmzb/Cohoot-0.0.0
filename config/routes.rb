@@ -8,6 +8,7 @@ Beta1::Application.routes.draw do
   devise_for :users
   resources :organizations
   resources :programs
+  resources :program_activities
   resources :follow_users
 
   root :to => "search#index"

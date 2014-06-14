@@ -1,15 +1,31 @@
 <%= render "/parts/mainnav" %>
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <h2><%= @program.prog_name %></h2>
+  <h4> at <%= link_to @organization.name, organization_path(@organization) %> </h4> </br>
+  <h5><%= @program.prog_obj %></h5> 
+  <h4><%= @program.next_step %></h4> </br>
 
-<p>
-  <strong>Prog name:</strong>
-  <%= @program.prog_name %>
-</p>
 
-<p>
-  <strong>Prog obj:</strong>
-  <%= @program.prog_obj %>
-</p>
+<strong> Who this program is for: </strong> <%= @program.ideal_candidate %> </br>
 
-<%= link_to 'Edit', edit_program_path(@program) %> |
-<%= link_to 'Back', programs_path %>
+<strong> Where you might be at: </strong> <%= @program.initial_condition %> </br>
+
+<strong> Where we help you get to: </strong> <%= @program.goal_condition %> </br></br>
+
+
+locations </br></br>
+documents </br></br>
+loop 	</br></br>
+time commitment </br></br>
+people </br></br>
+activities </br></br>
+annual capacity </br></br>
+
+
+
+<!--fix this-->
+<% if current_user == @organization.users %>
+	%= link_to 'Edit', edit_program_path(@program) %>
+<% end %> 
+
+</dvi>

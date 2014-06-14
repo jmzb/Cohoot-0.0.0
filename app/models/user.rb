@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection  
 
   belongs_to :organization
-  has_and_belongs_to_many :programs
-  has_many :locations, through: :organization
+  has_many :programs, through: :organizations
+  has_many :locations, through: :organizations
   has_many :campaigns
 
   #for following users
