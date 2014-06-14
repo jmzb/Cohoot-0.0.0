@@ -19,6 +19,9 @@ GEM
       activesupport (= 4.0.3)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-sqlserver-adapter (4.0.0)
+      activerecord (~> 4.0.0)
+      arel (~> 4.0.1)
     activesupport (4.0.3)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -37,6 +40,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    daemons (1.1.9)
     data_migrate (1.2.0)
       rails (>= 3.0.0)
     devise (3.2.4)
@@ -45,20 +49,51 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    draper (1.3.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (2.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
+    foreigner (1.6.1)
+      activerecord (>= 3.0.0)
+    haml (4.0.5)
+      tilt
     hike (1.2.3)
     i18n (0.6.9)
+    immigrant (0.1.8)
+      activerecord (>= 3.0)
+      foreigner (>= 1.2.1)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    js-routes (0.9.8)
+      railties (>= 3.2)
+      sprockets-rails
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailcatcher (0.2.4)
+      eventmachine
+      haml
+      i18n
+      json
+      mail
+      sinatra
+      skinny (>= 0.1.2)
+      sqlite3-ruby
+      thin
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.10.0)
@@ -67,6 +102,8 @@ GEM
     orm_adapter (0.5.0)
     polyglot (0.3.4)
     rack (1.5.2)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.3)
@@ -85,6 +122,7 @@ GEM
     rake (10.3.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    request_store (1.0.5)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -103,6 +141,13 @@ GEM
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    skinny (0.2.3)
+      eventmachine (~> 1.0.0)
+      thin (~> 1.5.0)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -113,6 +158,16 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.9)
+    sqlite3-ruby (1.3.3)
+      sqlite3 (>= 1.3.3)
+    sqlserver-foreigner (0.0.2)
+      activerecord-sqlserver-adapter (> 0)
+      foreigner (> 0)
+    state_machine (1.2.0)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.19.1)
     thread_safe (0.3.3)
     tilt (1.4.1)
@@ -136,8 +191,14 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   data_migrate
   devise
+  draper (~> 1.3)
+  factory_girl_rails
+  foreigner
+  immigrant
   jbuilder (~> 1.2)
   jquery-rails
+  js-routes
+  mailcatcher
   nestive (~> 0.5)
   rails (= 4.0.3)
   sass-rails (~> 4.0.0)
@@ -147,5 +208,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   sqlite3
+  sqlserver-foreigner
+  state_machine
   turbolinks
   uglifier (>= 1.3.0)

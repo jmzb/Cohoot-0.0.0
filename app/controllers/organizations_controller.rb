@@ -16,8 +16,6 @@ class OrganizationsController < ApplicationController
         @users = @organization.users.load
         @campaigns = @organization.campaigns.load
         @programs = @organization.programs.load
-        #@followers = @organization.followers.load
-        #@user = User.find(params[:id])  #I THINK THIS IS JUNK THAT I ADDED FOR NO REASON
 
   end
 

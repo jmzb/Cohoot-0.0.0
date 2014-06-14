@@ -1,7 +1,9 @@
 <%= render "/parts/mainnav" %>
-<h1>Editing program</h1>
+<div class="container-fluid">
+
+<h2><%= @program.prog_name %></h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @program %> |
-<%= link_to 'Back', programs_path %>
+
+</div>

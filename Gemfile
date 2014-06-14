@@ -34,7 +34,22 @@ gem 'simple_form'
 gem 'devise'
 
 gem 'nestive', '~> 0.5'
+
+gem 'state_machine'
+
+gem 'draper', '~> 1.3'
+
+gem "js-routes"
+
+# adds data migration functionality to rake
 gem 'data_migrate'
+
+#a set of gems to handle foreign keys, gem not currently implemented
+gem 'foreigner'
+gem 'immigrant'
+gem 'sqlserver-foreigner'
+
+gem 'mailcatcher'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -45,6 +60,7 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'shoulda-context'
+  gem 'factory_girl_rails'
 end
 
 

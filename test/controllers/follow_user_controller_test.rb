@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FollowUserControllerTest < ActionController::TestCase
+class FollowUsersControllerTest < ActionController::TestCase
   context "#new" do
   	context "when not logged in" do
   		should "should redirect to login page" do
@@ -21,7 +21,7 @@ class FollowUserControllerTest < ActionController::TestCase
 
   		should "should set a flash error if the followed_id params is missing" do 
   			get :new, {}
-  			assert_equal "Uh oh, we couldn't find the account you were looking to follow.", flash[:error]
+  			assert_equal "Uh oh, we couldn't find the person you were looking to follow.", flash[:error]
   		end
 
   		should "display followed's name" do
@@ -55,14 +55,13 @@ class FollowUserControllerTest < ActionController::TestCase
   		end	
 
   	end # end context when logged in
-
   end # end #new	
 
   context "#delete" do
- 	context "when not logged in" do
-  	end # end context when not logged in
+ 	  context "when not logged in" do
+  	end 
   	context "when logged in" do
-    end # end context when logged in 	
+    end 	
   end # end context #delete		
 
 end

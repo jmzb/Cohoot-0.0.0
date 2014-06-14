@@ -1,0 +1,18 @@
+<div class="col-md-5 ">
+	</br>
+	</br>
+	</br>	
+	  <h2><%= @user.first_name %>'s Loop</h2>	
+		<% if @campaigns %>
+		  <% @campaigns.each do |campaign| %>
+			<div class="well">
+			  <%= campaign.content %> </br>
+			  <%= link_to time_ago_in_words(campaign.created_at), campaign_path(campaign) %> ago,
+			  by <%= campaign.user.full_name %>
+			</div>	
+		  <% end %>	
+
+
+
+    <% end %>
+	</div> 

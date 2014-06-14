@@ -1,0 +1,44 @@
+<%= render "/parts/mainnav" %>
+<div class="container-fluid">
+<div class="page-header">
+  <h3><%= @user.full_name %> is following:</h3>
+</div>
+
+<div class="row">
+<% if @follow_users %>
+<% @follow_users.each do |follow| %>
+  <% followed = follow.followed %>
+  <div id="<%= dom_id(follow) %>" class="followed row">
+    <div class="col-md-6 col-md-offset-1">
+      <strong><%= link_to followed.full_name, profile_page_path(followed.id) %></strong> | 
+      	 <%= form_for @follow_users, url: follow_user_path(@follow_users), method: :delete do |form| %>
+          <%= submit_tag "Unfollow", class: 'btn btn-default' %>
+        <% end %>
+  	</div>
+  </div>
+
+  <% end %>  	
+<% end %>
+</div>
+
+
+
+<div class="row">
+<div class="page-header">
+  <h1><%= @user.full_name %> is followed by:</h1>
+</div>
+
+<% if @followeds %>
+  <% @follow_users.each do |follow| %>
+  	<% followed = follow.followed %>
+  	<div id="<%= dom_id(follow) %>" class="followed row">
+        <div class="col-md-6">
+      	  <%= link_to followed.full_name, profile_page_path(followed.id) %>
+    	</div>
+	</div>
+  <% end %>
+<% end %>
+</div>
+
+
+</div>

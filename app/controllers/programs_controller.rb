@@ -10,6 +10,11 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+    @program = Program.find(params[:id])
+        @locations = @program.locations.load
+        @users = @program.users.load
+        @campaigns = @program.campaigns.load
+        @organization = @program.organization
   end
 
   # GET /programs/new
@@ -69,6 +74,7 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params.require(:program).permit(:prog_name, :prog_obj, :organization_id)
+      params.require(:program).permit(:prog_name, :prog_obj, 
+        :organization_id, :ideal_candidate, :initial_condition, :goal_condition, :next_step, :program_capacity)
     end
 end
