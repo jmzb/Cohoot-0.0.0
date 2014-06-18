@@ -2,7 +2,7 @@
 
 
 
-<%= simple_form_for @organization, 
+<%= simple_form_for @organization,
     defaults: { input_html: { :class => 'form-horizontal span6 form-control' } } do |f| %>
  
   <% if @organization.errors.any? %>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="row info">
-    <%= f.input :user_id,  placeholder: 'User ID', label: 'User ID'  %>
+    <%# f.input :user_id,  placeholder: 'User ID', label: 'User ID'  %>
   </div>
 
   <div class="row info">

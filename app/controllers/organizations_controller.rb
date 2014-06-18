@@ -22,6 +22,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
+    @location = @organizaation.location.new
   end
 
   # GET /organizations/1/edit

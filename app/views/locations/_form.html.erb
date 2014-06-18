@@ -7,7 +7,10 @@
     <%= f.input :loc_city %>
     <%= f.input :loc_state %>
     <%= f.input :loc_zip %>
-    <%= f.input :organization_id, collection: Organization.all, label_method: :name %>
+    <%= f.input :organization_id,
+                as: :hidden,
+                value: 'Organization.where("id" => current_user.organization)' 
+    %>             
   </div>
 
   <div class="form-actions">
