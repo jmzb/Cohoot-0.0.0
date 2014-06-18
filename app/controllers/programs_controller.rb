@@ -11,7 +11,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1.json
   def show
     @program = Program.find(params[:id])
-        @locations = @program.locations.load
+        @locations = @program.organization.locations.load
         @users = @program.users.load
         @campaigns = @program.campaigns.load
         @organization = @program.organization
