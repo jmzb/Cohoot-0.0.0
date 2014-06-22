@@ -5,7 +5,7 @@ Beta1::Application.routes.draw do
   get "users/index"
   resources :campaigns
   resources :locations
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   resources :organizations
   resources :programs
   resources :program_activities
@@ -26,6 +26,7 @@ devise_for :users, :skip => [:sessions]
   get 'profile/:id', to: 'profiles#show', as: :profile_page
   get "profiles/show"
   get "search/index"
+  get 'set_organization/:id', to: 'set_organization#index', as: :set_organization
 
   #DEVLOPMENT ROUTES
   

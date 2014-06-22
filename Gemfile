@@ -61,6 +61,13 @@ group :test do
   gem 'shoulda-matchers'
   gem 'shoulda-context'
   gem 'factory_girl_rails'
+  #gem 'faker'
+  #gem 'capybara'
+  #gem 'launchy'
+end
+
+group :development, :test do
+  #gem 'factory_girl_rails'
 end
 
 

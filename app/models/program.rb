@@ -1,8 +1,6 @@
 class Program < ActiveRecord::Base
+	
 	belongs_to :organization
-	has_many :users, through: :organization
-	has_many :locations, through: :organization
-	has_many :campaigns, through: :users
 	has_many :program_activities
 
 

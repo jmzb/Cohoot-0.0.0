@@ -4,6 +4,9 @@ class FollowUser < ActiveRecord::Base
 	belongs_to :follower, class_name: "User", foreign_key: "user_id"
 	belongs_to :followed, class_name: "User", foreign_key: "followed_id"
 
+
+
+
 #	after_destroy :delete_follower_connect!
 
 
@@ -31,7 +34,6 @@ class FollowUser < ActiveRecord::Base
 #		follower.create(follower_params) #not sure how to handle these params
 #		followed.create(followed_params) #not sure how to handle these params
 #	end
-#
 #
 #	def follower_params
 #		params.require(:follower).permit(:follower)

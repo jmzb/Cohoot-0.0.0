@@ -5,11 +5,21 @@
 
 <div class="col-md-4 col-sm-offset-1">
 <h1 class="cover-heading"><%= @organization.name %></h1>
-   <p class="lead"><%= @organization.content %></p>
-   <p class="lead">
-   		<%= render "/parts/org_access" %>
-   		<%= render "/parts/org_basic" %>	
-   </p>
+   <p class="lead"><%= @organization.content %></p> </br>
+   <p>
+    <strong> Focus </strong> </br>
+    Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text
+  </p>  
+
+  <p>
+    <strong> History </strong> </br>
+    Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text
+  </p>   
+</br>
+  
+   
+<%= render "/parts/org_basic" %>	
+ 
 </div>	
 <%= render "/parts/org_feed" %>
 

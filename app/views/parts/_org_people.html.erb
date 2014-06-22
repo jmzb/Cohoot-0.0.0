@@ -5,11 +5,17 @@
  <div class="panel-body">
 
 <% if @users %>
- <% @users.each do |user| %>
-  <div class="well">
-   <%= link_to user.full_name, profile_page_path(user.id) %> </br>
-  </div>	
- <% end %>	
+  <% @users.each do |user| %>
+ 	<% if user_signed_in? %>
+  		<div class="well">
+   		  <%= link_to user.full_name, profile_page_path(user.id) %>, <%= user.job_title %>
+  		</div>	
+ 	<% else %>
+  		<div class="well">
+    	  <%= user.full_name %>, <%= user.job_title %>
+  		</div>
+  	<% end %>		
+<% end %>
 <% end %>
 
   			

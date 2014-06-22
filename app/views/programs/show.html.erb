@@ -121,7 +121,7 @@
 	  <%= campaign.content %> </br>
 	  by 
 	  <% if user_signed_in?%>
-		  <%= campaign.user.full_name %>
+		  <%= link_to campaign.user.full_name, profile_page_path(campaign.user) %>
 	  <% else %>
 	      <%= link_to campaign.user.organization.name, organization_path(campaign.user.organization) %>
 	  <% end %>

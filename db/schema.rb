@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612211256) do
+ActiveRecord::Schema.define(version: 20140620210722) do
 
   create_table "campaigns", force: true do |t|
     t.text     "content"
@@ -22,12 +22,6 @@ ActiveRecord::Schema.define(version: 20140612211256) do
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id"
-
-  create_table "data_migrations", id: false, force: true do |t|
-    t.string "version", null: false
-  end
-
-  add_index "data_migrations", ["version"], name: "unique_data_migrations", unique: true
 
   create_table "follow_users", force: true do |t|
     t.integer  "user_id"
@@ -46,6 +40,8 @@ ActiveRecord::Schema.define(version: 20140612211256) do
     t.string   "loc_city"
     t.string   "loc_state"
     t.integer  "loc_zip"
+    t.string   "loc_phone"
+    t.string   "loc_fax"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "org_id"
@@ -60,21 +56,15 @@ ActiveRecord::Schema.define(version: 20140612211256) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "addressA"
-    t.string   "cityA"
-    t.string   "stateA"
-    t.string   "zipA"
-    t.string   "addressB"
-    t.string   "cityB"
-    t.string   "stateB"
-    t.string   "zipB"
     t.string   "website"
-    t.string   "phoneA"
-    t.string   "phoneB"
-    t.string   "fax"
+    t.string   "main_access"
     t.integer  "user_id"
+    t.integer  "program_id"
+    t.integer  "location_id"
   end
 
+  add_index "organizations", ["location_id"], name: "index_organizations_on_location_id"
+  add_index "organizations", ["program_id"], name: "index_organizations_on_program_id"
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id"
 
   create_table "program_activities", force: true do |t|
@@ -104,6 +94,16 @@ ActiveRecord::Schema.define(version: 20140612211256) do
   add_index "programs", ["org_id"], name: "index_programs_on_org_id"
   add_index "programs", ["organization_id"], name: "index_programs_on_organization_id"
 
+  create_table "staffs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "staffs", ["organization_id"], name: "index_staffs_on_organization_id"
+  add_index "staffs", ["user_id"], name: "index_staffs_on_user_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -122,6 +122,10 @@ ActiveRecord::Schema.define(version: 20140612211256) do
     t.string   "last_name"
     t.string   "job_title"
     t.integer  "volunteer"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

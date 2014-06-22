@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  content: MyText
+testOrg1:
+  name: First Organization
+  content: This is a test mission statement
 
-two:
-  name: MyString
-  content: MyText
+testOrg2:
+  name: Second Organizatoin
+  content: This is the second mission statement
