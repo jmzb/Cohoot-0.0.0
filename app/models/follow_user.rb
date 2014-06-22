@@ -4,7 +4,8 @@ class FollowUser < ActiveRecord::Base
 	belongs_to :follower, class_name: "User", foreign_key: "user_id"
 	belongs_to :followed, class_name: "User", foreign_key: "followed_id"
 
-
+  validates_presence_of :user_id
+	validates_presence_of :followed_id
 
 
 #	after_destroy :delete_follower_connect!

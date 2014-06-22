@@ -8,54 +8,85 @@ class FollowUserTest < ActiveSupport::TestCase
   should belong_to(:follower).class_name("User").with_foreign_key("user_id")
   should belong_to(:followed).class_name("User").with_foreign_key("followed_id")
 
+  should validate_presence_of(:user_id)
+  should validate_presence_of(:followed_id)
 
-#This whole set of tests might need to be revised...
-  test "that creating follower and followed works without raising an exception" do
-  	assert_nothing_raised do
-  		FollowUser.create follower: users(:testUser1), followed: users(:testUser3)
-  	end
+  context "creating a follow_user relationship with user objects" do
+      setup do 
+        @follow_user = FollowUser.create follower: users(:testUser1), followed: users(:testUser3)
+      end 
+        should "create a follow_user relationsihp without raising an exception" do
+          assert_nothing_raised do
+            @follow_user
+          end 
+        end
+        
+        should "create a user.follow_user" do
+         assert FollowUser.first, @follow_user
+        end
+
+        should "assign correct follower and followed" do
+          #this is FollowUser.last because creating a FollowUser generates two instances (one accessible to each user)
+          assert_equal FollowUser.last, @follow_user 
+        end 
+
+        should "return the correct follower" do
+          assert users(:testUser1).follow_users, @follow_user.follower
+         
+        end 
+
+        should "return the correct followed" do
+         assert users(:testUser1).follow_users, @follow_user.followed  
+        end 
   end
 
-  test "that user.follow_users is created" do
-    FollowUser.create follower: users(:testUser1), followed: users(:testUser3)
-    assert users(:testUser1).follow_users, "user.follow_user was not even created"
-  end  
 
-  test "that user.follow_users extists" do 
-    FollowUser.create follower: users(:testUser1), followed: users(:testUser3)
-    assert users(:testUser1).followeds.exists?, "user.follow_user.followeds does not exist"
-  end    
+  context "creating a follow_user relationship with user_id and followed_id" do
+    setup do
+      @follow_user = FollowUser.create user_id: users(:testUser1).id, followed_id: users(:testUser3).id
+    end
 
-  test "that user.follow_users is created with user_id and followed_id" do
-    FollowUser.create user_id: users(:testUser1), followed_id: users(:testUser3)
-    assert users(:testUser1).follow_users, "user.follow_user was not even created with the user_id and followed_id" 
-  end  
+      should "create a follow_user relationship without raising an exception" do
+          assert_nothing_raised do
+            @follow_user
+          end 
+        end
+        
+        should "create a user.follow_user (through the id)" do
+         assert FollowUser.first, @follow_user
+        end
+    
+        should "assign correct follower and followed (through the id)" do
+          assert_equal FollowUser.last, @follow_user
+        end 
 
-#1 currently fails
-  test "that user.follow_users includes a followed" do 
-    FollowUser.create follower: users(:testUser1), followed: users(:testUser3)
-#assert users(:testUser1).follow_users.include?(:folowed), "user.follow_user does not inlcude :followed"
-  end  
+        should "return the correct follower (through the id)" do
+          assert users(:testUser1).follow_users, @follow_user.follower
+        end
+        
+        should "return the correct followed (through the id)" do
+          assert users(:testUser1).follow_users, @follow_user.followed
+        end
+        
+        should "assign a user_id to follower and make it accessible to the follower" do
+          assert users(:testUser1).follow_users, @follow_user.user_id
+        end 
 
-#2 currently fails
-  test "that user.follow_users includes a followed_id" do 
-    FollowUser.create user_id: users(:testUser1), followed_id: users(:testUser3)
-  #  assert users(:testUser1).follow_users.include?(':followed_id'), "user.follow_user does not inlcude :followed_id"
-  end  
+        should "assign a followed_id to followed and make it accessible to the follower" do
+          assert users(:testUser1).follow_users, @follow_user.followed_id
+        end 
 
-#3 currently fails
-  test "that correct follower and followed are assigned when creating follow_users relationship" do 
-    FollowUser.create follower: users(:testUser1), followed: users(:testUser3)
-   # assert users(:testUser1).follow_users.include?(:testUser3), "user.follow_user does not include corrrect followed"
-    #assert_equal :testUser3, users(:testUser1).follow_users.where(:testUser3), "user.follow_users does not equal testUser3"
+        should "assign a user_id to follower and make it accessible to the followed" do
+          assert users(:testUser3).follow_users, @follow_user.user_id
+        end 
 
-  end  
+        should "assign a followed_id to followed and make it accessible to the followed" do
+          assert users(:testUser3).follow_users, @follow_user.followed_id
+        end 
 
-#4 currently fails
-  test "that creating a follow_user correctly relates user_id and followed_id" do 
-  	FollowUser.create user_id: users(:testUser1), followed_id: users(:testUser3)
-    #assert users(:testUser1).follow_users.include?(:testUser3), "user.follow_users does not include the correct followed_id"
   end
+
+
 
 
 # TESTING STATE
