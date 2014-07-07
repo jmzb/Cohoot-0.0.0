@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  #validates_acceptance_of :terms_of_service
 
   def full_name
   	first_name + " " + last_name

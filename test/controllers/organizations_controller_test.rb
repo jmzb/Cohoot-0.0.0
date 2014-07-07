@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class OrganizationsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in FactoryGirl.create(:user)
+  end
+  
   setup do
     @organization = organizations(:one)
   end

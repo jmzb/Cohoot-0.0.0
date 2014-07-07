@@ -10,6 +10,7 @@ Beta1::Application.routes.draw do
   resources :programs
   resources :program_activities
   resources :follow_users
+  resources :staffs
 
   root :to => "search#index"
 

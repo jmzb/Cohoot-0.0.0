@@ -1,6 +1,14 @@
 require 'test_helper'
 
 class FollowUsersControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in FactoryGirl.create(:user)
+  end
+
+  
   context "#new" do
   	context "when not logged in" do
   		should "should redirect to login page" do

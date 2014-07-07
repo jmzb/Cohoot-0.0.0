@@ -25,14 +25,21 @@ class StaffTest < ActiveSupport::TestCase
 					assert_equal Staff.first, @staff 
 				end 
 
-				should "return the correct user and organization" do
+				should "return the correct user" do
 					assert users(:testUser1).staff, @staff.user
-					assert users(:testUser1).staff, @staff.organization 
 				end	
+
+				should "return the correct organization" do
+					assert users(:testUser1).staff, @staff.organization 
+				end
 
 				should "return the correct organization when calling organization.staff" do
 					assert organizations(:testOrg1).staff, @staff.organization
 				end
+
+				should "set the initial state to pending" do 
+					assert_equal "pending", @staff.state
+				end	
 	end
 
 
@@ -96,6 +103,30 @@ class StaffTest < ActiveSupport::TestCase
 			end
 	end
 
+
+# FAILING
+	context "#sending a new_staff_member_request email" do
+		setup do 
+			@staff_1 = Staff.create user_id: users(:testUser1).id, organization_id: organizations(:testOrg1).id, state: "confirmed"
+		end 	
+		should "send the email to @staff_1 about @staff_2" do
+			assert_difference 'ActionMailer::Base.deliveries.size', 1 do 
+				@staff_2 = Staff.create user_id: users(:testUser2).id, organization_id: organizations(:testOrg1).id, state: "pending"	
+			end	
+		end
+	end 	
+
+
+	context "the method #confirm! staff member" do 
+		setup do 
+			@staff_1 = Staff.create user_id: users(:testUser1).id, organization_id: organizations(:testOrg1).id
+		end 
+		
+		should "change staff state from pending to confirmed" do 
+			@staff_1.confirm_member!
+			assert_equal "confirmed", @staff_1.state
+		end 	
+	end	
 	
 
 

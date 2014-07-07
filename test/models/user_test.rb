@@ -13,7 +13,6 @@ class UserTest < ActiveSupport::TestCase
   	#failing
   	#should have_many(:locations).through(:organizaiton).source(:staff)
 
-
 	should have_many(:follow_users)
 	should have_many(:followers).through(:follow_users)
 	should have_many(:followeds).through(:follow_users)
@@ -22,8 +21,7 @@ class UserTest < ActiveSupport::TestCase
 
   should validate_presence_of(:first_name)
   should validate_presence_of(:last_name)
-
-	#should should validate_acceptance_of(:terms_of_service).with_message('You must accept the terms of service')
+	#should should validate_acceptance_of(:terms_of_service) #.with_message('You must accept the terms of service')
 
 	test "a user should enter a first name" do
 	  user = User.new

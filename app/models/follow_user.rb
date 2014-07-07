@@ -16,7 +16,7 @@ class FollowUser < ActiveRecord::Base
 		transaction do	
 			following_a = create(user: user1, follower: user1, followed: user2)
 			#following_a = create(user: user1, followed: user2) 
-#			followed_by = create(user: user2, follower: user1, followed: user2)
+			#followed_by = create(user: user2, follower: user1, followed: user2)
 			#followed_by = create(user: user2, follower: user1)
 		end	
 	end	

@@ -23,6 +23,12 @@
     <%= f.input_field :email, placeholder: 'email', :required => true %> </br>	
     <%= f.input_field :password, placeholder: 'password', :required => true %> </br>	  
     <%= f.input_field :password_confirmation, placeholder: 'confirm password', :required => true %> </br>
+    <%# f.input :terms_of_service, 
+    				as: :boolean,
+    				label: ("I accept the #{link_to 'Terms of Service', root_path}.").html_safe,
+    				label_html: {}
+     %></br>
+
     <%= f.button :submit, 'Sign up', :class => "btn btn-primary btn-lg" %>
 	<% end %>
 
