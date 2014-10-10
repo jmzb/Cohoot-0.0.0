@@ -7,6 +7,7 @@ class OrganizationTest < ActiveSupport::TestCase
 
     should have_many(:staff)
     should have_many(:users).through(:staff)
+    should have_many(:campaigns).through(:users)
 
   	should have_many(:programs)
   	should have_many(:program_activities).through(:programs)

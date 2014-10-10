@@ -9,9 +9,10 @@ class ProgramsController < ApplicationController
 
   # GET /programs/1
   # GET /programs/1.json
+
   def show
     @program = Program.find(params[:id])
-        @locations = @program.organization.locations.load
+        #@locations = @program.organization.locations.load
         @users = @program.users.load
         @campaigns = @program.campaigns.load
         @organization = @program.organization
@@ -20,6 +21,8 @@ class ProgramsController < ApplicationController
   # GET /programs/new
   def new
     @program = Program.new
+      @user = current_user
+      @organization = @user.organization
   end
 
   # GET /programs/1/edit

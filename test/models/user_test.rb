@@ -6,12 +6,12 @@ class UserTest < ActiveSupport::TestCase
 	should have_many(:campaigns)
 
 	should have_one(:staff)
-	should have_one(:organization).through(:staff)
+	should have_one(:organizations).through(:staff)
 
-	  #failing
-  	#should have_many(:programs).through(:organizaiton).source(:staff)
+	
+  	should have_many(:programs).through(:organizations)
   	#failing
-  	#should have_many(:locations).through(:organizaiton).source(:staff)
+  	should have_many(:locations).through(:organizaitons)
 
 	should have_many(:follow_users)
 	should have_many(:followers).through(:follow_users)

@@ -17,6 +17,7 @@ class OrganizationsController < ApplicationController
         @campaigns = @organization.campaigns.load
         @programs = @organization.programs.load
 
+
   end
 
   # GET /organizations/new
@@ -77,6 +78,6 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit(:name, :content, :website, :phoneA, :fax)
+      params.require(:organization).permit(:name, :content, :website, :history, :tagline)
     end
 end

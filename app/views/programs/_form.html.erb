@@ -1,27 +1,27 @@
 
-<%= simple_form_for(@program) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :prog_name %>
-    <%= f.input :prog_obj %>
-    <%= f.input :ideal_candidate %>
-    <%= f.input :initial_condition %>
-    <%= f.input :goal_condition %>
-    <%= f.input :next_step %>
-    <%= f.input :program_capacity %>
-
-    <!--insecure-->
-    <%= f.association :organization, 
-    	input_html: { value: '@organization.id' }, 
-    	wrapper_html: { class: 'hidden' } %>
-  </div>
 
 
+ 
+ 
+    <%= simple_form_for(@program) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :prog_name %>
+        <%= f.input :prog_obj %>
+        <%= f.input :ideal_candidate %>
+        <%= f.input :initial_condition %>
+        <%= f.input :goal_condition %>
+        <%= f.input :next_step %>
+        <%= f.input :program_capacity %>
 
+        <!--insecure-->
+        <%= f.input :organization_id, 
+        	input_html: { value: '@organization.id' }, 
+        	wrapper_html: { class: 'hidden' } %>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-
-
-<% end %>
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+   

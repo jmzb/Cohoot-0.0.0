@@ -15,6 +15,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
+    @user = current_user
     @campaign = Campaign.new
   end
 

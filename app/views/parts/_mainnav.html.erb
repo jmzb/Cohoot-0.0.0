@@ -12,7 +12,14 @@
 
 
 <% if user_signed_in? %>
-       <li> <%= link_to image_tag("skateboard_glyph.png"), profile_page_path(current_user.id) %> </li> 
+       <li> <%= link_to image_tag("skateboard_glyph.png"), 
+                profile_page_path(current_user.id) %> </li> 
+
+      <% if current_user.staff %>          
+       <li> <%= link_to image_tag("radar_glyph.png"), 
+                organization_path(current_user.staff.organization.id) %> </li> 
+      <% end %>                    
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle btn-lg" data-toggle="dropdown">
             <%= current_user.full_name %><b class="caret"></b></a>
@@ -24,7 +31,11 @@
                   <li><%= link_to "all users", users_index_path %></li>
                 <li class="divider"></li>
                 <li> <%= link_to "My Profile", profile_page_path(current_user.id) %> </li>
-                <li> <%# link_to "My Organization", organization_path(current_user.organization.id) %>
+
+             <% if current_user.staff %>   
+                <li> <%= link_to "My Organization", 
+                          organization_path(current_user.staff.organization.id) %> </li>
+             <% end %>             
                 <li><%= link_to "Edit account", edit_user_registration_path %></li>
                 <li><%= link_to "Log out", logout_path, method: :delete %></li>
               </ul>   

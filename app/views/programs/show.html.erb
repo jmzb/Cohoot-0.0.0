@@ -11,7 +11,7 @@
 	  <div class="trans-overlay panel-default">
 	  	<div class="container-fluid">
   			<h1><%= @program.prog_name %> <small> 
-  				at <%= link_to @organization.name, organization_path(@organization) %> 
+  				at <%# link_to @organization, organization_path(@organization) %> 
   			</small></h1>
   			 
   			</br>
@@ -98,7 +98,7 @@
 <h2>People at <%= @program.prog_name %> </h2>
 </br></br>
 <% end %>
-<h2>Other Prorams by <%= link_to @organization.name, organization_path(@organization) %> </h2>
+<h2>Other Prorams by <%# link_to @organization.name, organization_path(@organization) %> </h2>
 </br></br>
 <% if user_signed_in?%>
 <h2>Followers </h2>
@@ -139,9 +139,9 @@
 
 
 <!--fix this-->
-<% if current_user == @organization.users %>
-	%= link_to 'Edit', edit_program_path(@program) %>
-<% end %> 
+<%# if current_user == @organization.users %>
+	<%# link_to 'Edit', edit_program_path(@program) %>
+<%# end %> 
 
 </div>
 </div>

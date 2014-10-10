@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622022237) do
+ActiveRecord::Schema.define(version: 20140707021853) do
 
   create_table "campaigns", force: true do |t|
     t.text     "content"
@@ -61,10 +61,14 @@ ActiveRecord::Schema.define(version: 20140622022237) do
     t.integer  "user_id"
     t.integer  "program_id"
     t.integer  "location_id"
+    t.text     "history"
+    t.text     "tagline"
   end
 
+  add_index "organizations", ["history"], name: "index_organizations_on_history"
   add_index "organizations", ["location_id"], name: "index_organizations_on_location_id"
   add_index "organizations", ["program_id"], name: "index_organizations_on_program_id"
+  add_index "organizations", ["tagline"], name: "index_organizations_on_tagline"
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id"
 
   create_table "program_activities", force: true do |t|

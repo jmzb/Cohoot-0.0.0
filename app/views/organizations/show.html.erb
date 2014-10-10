@@ -1,40 +1,50 @@
 <%= render "/parts/mainnav" %>
 
 <div class="container-fluid">
-<div class="row">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-1">
+      <h1 class="cover-heading"><%= @organization.name %></h1>
+      <p class="lead"><%= @organization.tagline %></p> </br>
+    </div> 
+  </div>  
 
-<div class="col-md-4 col-sm-offset-1">
-<h1 class="cover-heading"><%= @organization.name %></h1>
-   <p class="lead"><%= @organization.content %></p> </br>
-   <p>
-    <strong> Focus </strong> </br>
-    Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text
-  </p>  
+  <div class="row"> 
+   <div class="col-md-4 col-md-offset-1">    
+      <p>  <strong> Mission </strong> </br>
+          <%= @organization.content %>
+      </p>   
 
-  <p>
-    <strong> History </strong> </br>
-    Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text Text text text
-  </p>   
-</br>
-  
-   
-<%= render "/parts/org_basic" %>	
- 
-</div>	
-<%= render "/parts/org_feed" %>
+      <p>
+        <strong> Focus </strong> </br>
+        <div class="btn btn-primary btn-xs">Community-based action</div>
+        <div class="btn btn-primary btn-xs">Education</div>
+        <div class="btn btn-primary btn-xs">Activism</div>
+        <div class="btn btn-primary btn-xs">Public policy</div>
+       
+       
+      </p>  
 
+      <p>
+        <strong> History </strong> </br>
+        <%= @organization.history %>
+      </p> </br>
 
+      <%= render "/organizations/parts/org_basic" %>	
+   </div>
 
-<div class="col-md-2 pull-right">
-<%= render "/parts/org_location" %>
+    <div class="col-md-4">
+      <%= render "/organizations/parts/org_feed" %>
+    </div>
 
-</div>
+    <div class="col-md-3">
+      <%= render "/organizations/parts/org_access" %>  
+      <%= render "/organizations/parts/org_location" %>
+    </div>
 
 
 
 
 </div> <!--end row-->
-</div> <!--end col-md-4 col-md-offset-1-->
 </div> <!--end container-fluid-->
 
 

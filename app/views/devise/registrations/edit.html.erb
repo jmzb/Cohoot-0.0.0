@@ -1,16 +1,22 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= f.error_notification %>
+<div class="container-fluid">
 
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+
+
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= f.error_notification %>
+
+<div class="row">
+ <div class="col-md-3 col-md-offset-2">  
   <div class="form-inputs">
 
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :job_title %>
-    <%= f.input_field :organization_id, collection: Organization.all, label_method: :name %>
 
-    <%= f.collection_check_boxes :volunteer, [[true, 'Volunteer']], :first, :last %>
+    <%# f.collection_check_boxes :volunteer, [[true, 'Volunteer']], :first, :last %>
 
     <%= f.input :email, :required => true %>
 
@@ -18,16 +24,42 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-    <%= f.input :password_confirmation, :required => false %>
-    <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-  </div>
+    <div class="well">
+        <%= f.input :password,
+              :label => "Change Password", 
+              :autocomplete => "off", :hint => "leave it blank if you don't want to change it", 
+              :required => false %>
+        <%= f.input :password_confirmation, :required => false %>
+    </div>
 
-  <%= f.button :submit %>
+     <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+  
+    <%= f.button :submit %>
+
+  </div>
+ </div>
+ 
+ <div class="col-md-3 col-md-offset-1">  
+    <%= f.input :job_title %>
+    <%# f.input :background %>
+
+ </div>   
+   
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
+</br></br>
+<div class="row">
+   <div class="col-md-3 col-md-offset-2"> 
+   <div class="well"> 
+    <h3>Cancel my account</h3>
+    <p>Unhappy? <%= link_to "Cancel my account", 
+          registration_path(resource_name), 
+          :data => { :confirm => "Are you sure?" }, 
+          :method => :delete %></p>
+    <%= link_to "Back", :back %>
+  </div>
+</br></br></br>
+  </div>
+</div>
+</div>
