@@ -17,13 +17,12 @@ class OrganizationsController < ApplicationController
         @campaigns = @organization.campaigns.load
         @programs = @organization.programs.load
 
-
   end
 
   # GET /organizations/new
   def new
     @organization = Organization.new
-    @location = @organizaation.location.new
+    #@location = @organizaation.location.new
   end
 
   # GET /organizations/1/edit

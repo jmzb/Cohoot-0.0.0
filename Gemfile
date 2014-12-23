@@ -49,6 +49,7 @@ gem 'foreigner'
 gem 'immigrant'
 gem 'sqlserver-foreigner'
 
+#a gem to help with testing mailers, not implemented
 gem 'mailcatcher'
 
 group :doc do
