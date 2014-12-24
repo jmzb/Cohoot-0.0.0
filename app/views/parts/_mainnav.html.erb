@@ -9,16 +9,17 @@
     </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "add org", organizations_path %></li>
+
 
 <% if user_signed_in? %>
-        
-       <li> <%= link_to image_tag("skateboard_glyph.png"), profile_page_path(current_user.id) %> </li> 
-      <!-- <li> <%= link_to image_tag("radar_glyph.png"), root_path %> </li> -->
-       <!-- <li> <%= link_to image_tag("heart_empty.png"), root_path %> </li> place for intake link -->
-     <!--   <li> <%= link_to image_tag("envelope_glyph.png"), root_path %> </li> -->
-        
-        
+       <li> <%= link_to image_tag("skateboard_glyph.png"), 
+                profile_page_path(current_user.id) %> </li> 
+
+      <% if current_user.staff %>          
+       <li> <%= link_to image_tag("radar_glyph.png"), 
+                organization_path(current_user.staff.organization.id) %> </li> 
+      <% end %>                    
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle btn-lg" data-toggle="dropdown">
             <%= current_user.full_name %><b class="caret"></b></a>
@@ -30,11 +31,21 @@
                   <li><%= link_to "all users", users_index_path %></li>
                 <li class="divider"></li>
                 <li> <%= link_to "My Profile", profile_page_path(current_user.id) %> </li>
-                <li> <%= link_to "My Organization", organization_path(current_user.organization.id) %>
+
+             <% if current_user.staff %>   
+                <li> <%= link_to "My Organization", 
+                          organization_path(current_user.staff.organization.id) %> </li>
+             <% end %>             
                 <li><%= link_to "Edit account", edit_user_registration_path %></li>
                 <li><%= link_to "Log out", logout_path, method: :delete %></li>
               </ul>   
 <% else %>
+            <li>
+            <%= button_to "Sign Up!", new_user_registration_path, 
+                :type => "button", 
+                :class => "btn btn-default btn-lg", 
+                :method => :get %>    
+            </li> 
             <li><%= link_to "Log In", login_path %> </li>
 <% end %>   
       </ul> <!--end navbar-right -->

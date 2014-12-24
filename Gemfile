@@ -49,6 +49,7 @@ gem 'foreigner'
 gem 'immigrant'
 gem 'sqlserver-foreigner'
 
+#a gem to help with testing mailers, not implemented
 gem 'mailcatcher'
 
 group :doc do
@@ -61,6 +62,13 @@ group :test do
   gem 'shoulda-matchers'
   gem 'shoulda-context'
   gem 'factory_girl_rails'
+  #gem 'faker'
+  #gem 'capybara'
+  #gem 'launchy'
+end
+
+group :development, :test do
+  #gem 'factory_girl_rails'
 end
 
 

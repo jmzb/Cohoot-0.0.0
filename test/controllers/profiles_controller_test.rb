@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class ProfilesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in FactoryGirl.create(:user)
+  end
   
   test "should get show" do
     get :show, id: users(:testUser1).first_name

@@ -2,9 +2,8 @@ class FollowUsersController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		#this only works for the current user. For other users use SHOW
 		@user = current_user
-		@follow_users = @user.follow_users.includes(:followed, :follower).all
+		@follow_users = @user.follow_users.includes(:followed, :follower).all 
 	end	
 
 

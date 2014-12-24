@@ -22,7 +22,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
-    @location = @organizaation.location.new
+    #@location = @organizaation.location.new
   end
 
   # GET /organizations/1/edit
@@ -77,6 +77,6 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit(:name, :content, :website, :phoneA, :fax)
+      params.require(:organization).permit(:name, :content, :website, :history, :tagline)
     end
 end

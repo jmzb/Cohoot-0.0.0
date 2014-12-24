@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612211256) do
+ActiveRecord::Schema.define(version: 20141223224559) do
 
   create_table "campaigns", force: true do |t|
     t.text     "content"
@@ -22,12 +22,6 @@ ActiveRecord::Schema.define(version: 20140612211256) do
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id"
-
-  create_table "data_migrations", id: false, force: true do |t|
-    t.string "version", null: false
-  end
-
-  add_index "data_migrations", ["version"], name: "unique_data_migrations", unique: true
 
   create_table "follow_users", force: true do |t|
     t.integer  "user_id"
@@ -46,6 +40,8 @@ ActiveRecord::Schema.define(version: 20140612211256) do
     t.string   "loc_city"
     t.string   "loc_state"
     t.integer  "loc_zip"
+    t.string   "loc_phone"
+    t.string   "loc_fax"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "org_id"
@@ -60,21 +56,19 @@ ActiveRecord::Schema.define(version: 20140612211256) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "addressA"
-    t.string   "cityA"
-    t.string   "stateA"
-    t.string   "zipA"
-    t.string   "addressB"
-    t.string   "cityB"
-    t.string   "stateB"
-    t.string   "zipB"
     t.string   "website"
-    t.string   "phoneA"
-    t.string   "phoneB"
-    t.string   "fax"
+    t.string   "main_access"
     t.integer  "user_id"
+    t.integer  "program_id"
+    t.integer  "location_id"
+    t.text     "history"
+    t.text     "tagline"
   end
 
+  add_index "organizations", ["history"], name: "index_organizations_on_history"
+  add_index "organizations", ["location_id"], name: "index_organizations_on_location_id"
+  add_index "organizations", ["program_id"], name: "index_organizations_on_program_id"
+  add_index "organizations", ["tagline"], name: "index_organizations_on_tagline"
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id"
 
   create_table "program_activities", force: true do |t|
@@ -94,15 +88,63 @@ ActiveRecord::Schema.define(version: 20140612211256) do
     t.datetime "updated_at"
     t.integer  "organization_id"
     t.text     "ideal_candidate"
-    t.text     "initial_condition"
     t.text     "goal_condition"
     t.string   "next_step"
     t.integer  "org_id"
-    t.string   "program_capacity"
+    t.time     "hrs_mon_s"
+    t.time     "hrs_mon_e"
+    t.time     "hrs_tues_s"
+    t.time     "hrs_tues_e"
+    t.time     "hrs_wed_s"
+    t.time     "hrs_wed_e"
+    t.time     "hrs_thurs_s"
+    t.time     "hrs_thurs_e"
+    t.time     "hrs_fri_s"
+    t.time     "hrs_fri_e"
+    t.time     "hrs_sat_s"
+    t.time     "hrs_sat_e"
+    t.time     "hrs_sun_s"
+    t.time     "hrs_sun_e"
+    t.text     "candidate_requirements"
+    t.string   "prog_cost"
+    t.decimal  "prog_hours"
+    t.string   "prog_hours_per_units"
+    t.text     "length_of_prog"
   end
 
+  add_index "programs", ["candidate_requirements"], name: "index_programs_on_candidate_requirements"
+  add_index "programs", ["hrs_fri_e"], name: "index_programs_on_hrs_fri_e"
+  add_index "programs", ["hrs_fri_s"], name: "index_programs_on_hrs_fri_s"
+  add_index "programs", ["hrs_mon_e"], name: "index_programs_on_hrs_mon_e"
+  add_index "programs", ["hrs_mon_s"], name: "index_programs_on_hrs_mon_s"
+  add_index "programs", ["hrs_sat_e"], name: "index_programs_on_hrs_sat_e"
+  add_index "programs", ["hrs_sat_s"], name: "index_programs_on_hrs_sat_s"
+  add_index "programs", ["hrs_sun_e"], name: "index_programs_on_hrs_sun_e"
+  add_index "programs", ["hrs_sun_s"], name: "index_programs_on_hrs_sun_s"
+  add_index "programs", ["hrs_thurs_e"], name: "index_programs_on_hrs_thurs_e"
+  add_index "programs", ["hrs_thurs_s"], name: "index_programs_on_hrs_thurs_s"
+  add_index "programs", ["hrs_tues_e"], name: "index_programs_on_hrs_tues_e"
+  add_index "programs", ["hrs_tues_s"], name: "index_programs_on_hrs_tues_s"
+  add_index "programs", ["hrs_wed_e"], name: "index_programs_on_hrs_wed_e"
+  add_index "programs", ["hrs_wed_s"], name: "index_programs_on_hrs_wed_s"
+  add_index "programs", ["length_of_prog"], name: "index_programs_on_length_of_prog"
   add_index "programs", ["org_id"], name: "index_programs_on_org_id"
   add_index "programs", ["organization_id"], name: "index_programs_on_organization_id"
+  add_index "programs", ["prog_cost"], name: "index_programs_on_prog_cost"
+  add_index "programs", ["prog_hours"], name: "index_programs_on_prog_hours"
+  add_index "programs", ["prog_hours_per_units"], name: "index_programs_on_prog_hours_per_units"
+
+  create_table "staffs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "state"
+  end
+
+  add_index "staffs", ["organization_id"], name: "index_staffs_on_organization_id"
+  add_index "staffs", ["state"], name: "index_staffs_on_state"
+  add_index "staffs", ["user_id"], name: "index_staffs_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -122,6 +164,10 @@ ActiveRecord::Schema.define(version: 20140612211256) do
     t.string   "last_name"
     t.string   "job_title"
     t.integer  "volunteer"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

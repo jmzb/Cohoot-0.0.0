@@ -1,8 +1,8 @@
 
 <div class="container-fluid bkgnd1">	
-	<ul class="nav nav-pills pull-right row-head2">
-		<li><%= link_to "Sign In", new_user_session_path, :class => "btn btn-primary btn-sm", :type => "button"%></li>	
-	</ul>
+	<div class="nav-pills pull-right row-head2">
+		<%= link_to "Sign In", new_user_session_path, :class => "btn btn-primary btn-lg", :type => "button"%>	
+	</div>
 <div class="container-fluid">
 <div class="row-head2">	
 	<div class="col-md-8 col-md-offset-2 row-head">
@@ -23,7 +23,12 @@
     <%= f.input_field :email, placeholder: 'email', :required => true %> </br>	
     <%= f.input_field :password, placeholder: 'password', :required => true %> </br>	  
     <%= f.input_field :password_confirmation, placeholder: 'confirm password', :required => true %> </br>
-    <%= f.input_field :organization_id, placeholder: 'organization id', collection: Organization.all, label_method: :name %>	</br>
+    <%# f.input :terms_of_service, 
+    				as: :boolean,
+    				label: ("I accept the #{link_to 'Terms of Service', root_path}.").html_safe,
+    				label_html: {}
+     %></br>
+
     <%= f.button :submit, 'Sign up', :class => "btn btn-primary btn-lg" %>
 	<% end %>
 

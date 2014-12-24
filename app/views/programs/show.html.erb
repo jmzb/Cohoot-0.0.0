@@ -2,148 +2,199 @@
 <div class="container-fluid">
 	
 <!-- Begin Map & Details Header -->
-	<div class="row"  
-		 style= "background-image: url(<%= asset_path 'sample_map.png' %>); 
-		         height: 537px; width: 1400px;">
-
-	<!-- Begin Program Details -->		         
-	<div class="col-md-6" >	
-	  <div class="trans-overlay panel-default">
+	<div class="row light-backgrouund">	
+	<div class="container-fluid">         
+		<div class="col-md-2" >	
 	  	<div class="container-fluid">
-  			<h1><%= @program.prog_name %> <small> 
-  				at <%= link_to @organization.name, organization_path(@organization) %> 
-  			</small></h1>
-  			 
-  			</br>
+	  	</br></br>
+	  		<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQzLjU0MTY2NjAzMDg4Mzc5IiB5PSI3MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9nPjwvc3ZnPg==" alt="..." class="img-circle">
+	   </div>		
+	 </div> 		
 
-  			<div class="row">
-  				<div class="col-sm-5">
-  				  <div class= "btn-group-vertical">	
-					<button type="button" class="btn btn-lg btn-default"> CONTACT </button>
-					<% if user_signed_in?%>
- 						<button type="button" class="btn btn-lg btn-default"> DIRECT MESSAGE </button> 
- 					<% end %>
-		 			<button type="button" class="btn btn-lg btn-default"> DIRECTIONS </button>
-		 			<button type="button" class="btn btn-lg btn-default"> QUICK ENROLL </button>	
-				  </div>
+	 <div class="col-md-3" >	
+	  		<br><br><br>
+  			<h1><%= @program.prog_name %> <br> 
+  				<small> 
+  					<%= @organization.name %>
+  				</small>
+  			</h1> </br>
+  </div>
 
-				
-				</div>
-				<div class="col-sm-6">
+
+				<div class="col-md-3 col-md-offset-4">
+					<div class="continer-fluid trans-overlay img-rounded">
 					<h3>Contact</h3>
-					<strong> Rep: </strong> Thisisall Hardcode </br>
-					<strong> Title:  </strong> Maker of mockups </br>
-					<strong> phone: </strong> 1-800-bad-info </br>
+					<strong> phone: </strong> 1-800-for-info </br>
 					<strong> email: </strong> thisisall@mockups.com  </br></br>
-				<div class="row">
-				  <div class="col-sm-6">		
-					<h4>Location</h4>
-					Top notch location </br>
-					Regular St.</br>
-					Decatur, GA 30030</br></br>
-				  </div>	
-				  <div class="col-sm-6">		
-					<h4>Hours</h4>
-					S:  closed </br>
-					M:	8:00am - 6:00pm</br>
-					T:	8:00am - 6:00pm</br>
-					W:	8:00am - 6:00pm</br>
-					T:	8:00am - 6:00pm</br>
-					F:	8:00am - 6:00pm</br>
-					S:	10:00am - 2:00pm</br>
+	
+					<strong> Space available! </strong></br></br>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  				Refer Now
+					</button>
+
+						<!-- Modal -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">Sign up for <%= @program.prog_name %> </h4>
+							      </div>
+							      <div class="modal-body">
+							      	<form>
+											  <div class="form-group col-sm-6">
+											    <label for="exampleInputEmail1">First Name</label>
+											    <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Enter your first name">
+											  </div>
+
+											  <div class="form-group col-sm-6">
+											    <label for="exampleInputEmail1">Last Name</label>
+											    <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Enter your last name">
+											  </div>
+
+											  <div class="form-group col-sm-6">
+											    <label for="exampleInputEmail1">Phone Number</label>
+											    <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Enter your phone number">
+											  </div>
+
+											  <div class="form-group col-sm-6">
+											    <label for="exampleInputEmail1">Email</label>
+											    <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Enter your email">
+											  </div>
+							       </form>
+							        
+							        <strong> Select Appointment time: </strong> <br>
+							        <div class="dropdown program-info">
+												  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+												    Available times
+												    <span class="caret"></span>
+												  </button>
+												  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+												    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tomorrow at 10:00am</a></li>
+												    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tomorrow at 10:30am</a></li>
+												    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tomorrow at 1:00am</a></li>
+												    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tomorrow at 11:30am</a></li>
+												  </ul>
+												</div>
+
+
+
+							       <br> <strong> Notes: </strong> <br>
+							        After you create your appointment we'll send you an email to confrim. When you come, please bring a valid ID with you. Thanks, we look forward to meeting you!
+
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+							        <button type="button" class="btn btn-primary">Refer</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
 				</div>
 				</div>	
-				</div>	 
+
 			</div>			
-	    </div> <!-- end container-fluid -->
-	  </div> <!-- end panel-trans -->
-	</div> <!-- end col-md-6 -->
-    </div> <!-- end row -->
+	    </div> 
+	 
+
+
+<div class="row">	
+	<div class="program-map-box">
+
+
+		<div class="col-md-9">
+			<iframe
+  			width="100%"
+  			height="500px"
+  			frameborder="-5" style="border:0"
+  			src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDJQhbquG-0AaxW8_R-02MbKVTkZ7uf-IQ&q=Georgia+Center+for+nonprofits+atlanta">
+			</iframe>
+		</div>	
+
+
+		<div class="col-md-3">
+			<div class="container-fluid">
+				<h3> Location </h3>
+					<p>
+						100 Peachtree Street NW, Suite 1500 <br>
+						Atlanta, GA 30303
+					</p>	
+			</div>
+
+			<div class="container-fluid">
+			<h3> Hours </h3>
+				<p>
+					
+						Monday: 9:00am - 5:00pm <br>
+						Tuesday: 9:00am - 5:00pm <br>
+						Wednesday: 9:00am - 5:00pm <br>
+						Thursday: 9:00am - 5:00pm <br>
+						Friday: 9:00am - 5:00pm <br>
+						Saturday: Closed <br>
+						Sunday: Closed <br>
+						
+				</p>	
+			</div>
+		</div>
+
+	</div>	
+</div>	
+	
+
 
 
 <!-- Begin Body Details -->
-<div class="container-fluid"> 
-</br>
+
   <div class="row">	
-	<div class="col-md-6">
+	
 
-<div class="row">  
-  <div class="col-md-6">
-	<h1> Ideal Candidate </h1> <%= @program.ideal_candidate %> </br>
+<div class="row light-backgrouund">  
+  <div class="col-md-4">
+  	<div class="continer-fluid fixed-overlay img-rounded">	
+			<h1> Who this is for </h1> <%= @program.ideal_candidate %> </br>
+			<strong> Requirements: </strong> You must live in the 30303 zip code
+		</div>
   </div>
-  <div class="col-md-6">
-    <h1> Target Goal </h1> 
-    <strong> Goal: </strong> <%= @program.goal_condition %> </br>
-    <strong>  Typical time until success: </strong> 2 months </br>
-    <strong>  Typical time commitment: </strong> 3 hours/ week </br>
-    <strong> Success rate: </strong> 75% </br> 
 
-
-</br></br>
-
+  <div class="col-md-4">
+  	<div class="continer-fluid fixed-overlay img-rounded">	
+    <h1> What it does </h1> 
+    <strong> What this program helps you do: </strong> <%= @program.goal_condition %> </br>
   </div>
+  </div>
+
+  <div class="col-md-4">
+  	<div class="continer-fluid fixed-overlay img-rounded">
+    <h1> What it takes </h1> 
+    <strong> Cost: </strong> free </br>
+    <strong> Hours you'll spend: </strong> About 5 hours a week </br>
+    <strong> Length of program: </strong> 6 weeks  </br>
+  </div>
+  </div>
+
+
 </div> <!-- end row -->
 
 
-</br></br></br></br>
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#">Activities</a></li>
-  <li><a href="#">Capacity</a></li>
-  <li><a href="#">Documents</a></li>
-  <li><a href="#">Impact</a></li>
-  <li><a href="#">Calendar</a></li>
+<div class="container-fluid program-info">
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a href="#">Activity</a></li>
+  <li><a href="#"> <strong> Pictures </strong> </a></li>
+  <li><a href="#"> <strong> Program Details </strong> </a></li>
+  <li><a href="#"> <strong> Documents </strong> </a></li>
+  <li><a href="#"> <strong> Similar Programs </strong> </a></li>
+  <li><a href="#"> <strong> People </strong> </a></li>
+  <li><a href="#"> <strong> Followers </strong> </a></li>
 </ul>
+</div>
+
+
 </br></br></br></br></br></br></br></br></br></br></br></br>
-<% if user_signed_in?%>
-<h2>People at <%= @program.prog_name %> </h2>
-</br></br>
-<% end %>
-<h2>Other Prorams by <%= link_to @organization.name, organization_path(@organization) %> </h2>
-</br></br>
-<% if user_signed_in?%>
-<h2>Followers </h2>
-</br></br>
-<h2>Following </h2>
-<% end %>
-</div>
 
-<!-- begin LOOP -->
-<div class="col-md-6">
-	<h1><%= @program.prog_name %>'s LOOP  <button type="button" class="btn btn-xs btn-primary"> follow </button>
-</h1>
-	<div class="container-fluid">
-</br>
-</br>
 
- <% if @campaigns %>
-  <% @campaigns.each do |campaign| %>
-	<div class="well">
-	  <%= campaign.content %> </br>
-	  by 
-	  <% if user_signed_in?%>
-		  <%= campaign.user.full_name %>
-	  <% else %>
-	      <%= link_to campaign.user.organization.name, organization_path(campaign.user.organization) %>
-	  <% end %>
-	   , <%= time_ago_in_words(campaign.created_at) %> ago
-
-	</div>	
-  <% end %>	
-
- 	
-<% end %>	
 
 
 </div>
 </div>
 
-
-<!--fix this-->
-<% if current_user == @organization.users %>
-	%= link_to 'Edit', edit_program_path(@program) %>
-<% end %> 
-
-</div>
-</div>
-</div>
 </br></br></br></br></br></br></br></br></br></br>

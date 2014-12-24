@@ -21,26 +21,24 @@
   <div class="row info">
     <%= f.input :name,  placeholder: 'Organization Name', label: 'Organization'  %>
   </div>
-
+  
   <div class="row info">
-    <%# f.input :user_id,  placeholder: 'User ID', label: 'User ID'  %>
+    <%= f.input :tagline,  placeholder: 'Your Tagline', label: 'Tagline'  %>
   </div>
 
   <div class="row info">
-    <%= f.input :content,  placeholder: 'Mission', label: 'Mission'  %>
+    <%= f.input :content,  placeholder: 'Your Mission', label: 'Mission'  %>
+  </div>
+
+  <div class="row info">
+    <%= f.input :history,  placeholder: 'Organization history', label: 'History'  %>
   </div>
 
   <div class="row info">
     <%= f.input :website,  placeholder: 'website url', label: 'Website'  %>
   </div>
 
-  <div class="row info">
-    <%= f.input :phoneA,  placeholder: 'Main Phone Number', label: 'Main Phone Number'  %>
-  </div>
 
-  <div class="row info">
-    <%= f.input :fax,  placeholder: 'Main Fax Number', label: 'Main Fax Number'  %>
-  </div>
 
   <%= f.button :submit %>
 <% end %>

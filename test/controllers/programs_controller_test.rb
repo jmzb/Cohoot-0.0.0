@@ -1,9 +1,16 @@
 require 'test_helper'
 
 class ProgramsControllerTest < ActionController::TestCase
-  setup do
-    @program = programs(:one)
+  include Devise::TestHelpers
+
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in FactoryGirl.create(:user)
   end
+
+  #setup do
+  #  @program = programs(:one)
+  #end
 
   test "should get index" do
     get :index

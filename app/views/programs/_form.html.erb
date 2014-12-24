@@ -1,27 +1,70 @@
 
-<%= simple_form_for(@program) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :prog_name %>
-    <%= f.input :prog_obj %>
-    <%= f.input :ideal_candidate %>
-    <%= f.input :initial_condition %>
-    <%= f.input :goal_condition %>
-    <%= f.input :next_step %>
-    <%= f.input :program_capacity %>
-
-    <!--insecure-->
-    <%= f.association :organization, 
-    	input_html: { value: '@organization.id' }, 
-    	wrapper_html: { class: 'hidden' } %>
-  </div>
 
 
+ 
+ 
+    <%= simple_form_for(@program) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+
+          <%= f.input :prog_name, label: 'The name of your program or service'  %>
+
+          <div class="col-md-6">
+
+          <%= f.input :hrs_mon_s, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Monday opening time' %>
+          <%= f.input :hrs_mon_e, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Monday closing time' %>
+
+          <%= f.input :hrs_tues_s, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Tuesday opening time' %>
+          <%= f.input :hrs_tues_e, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Tuesday closing time'  %>
 
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+            <%= f.input :hrs_wed_s, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Wednesday opening time' %>
+            <%= f.input :hrs_wed_e, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Wednesday closing time' %>
+
+              <%= f.input :hrs_thurs_s, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Thursday opening time' %>
+              <%= f.input :hrs_thurs_e, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Thursday closing time' %>
+
+               <%= f.input :hrs_fri_s, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Friday Opening time' %>
+              <%= f.input :hrs_fri_e, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Fridayday closing time' %>
+
+               <%= f.input :hrs_sat_s, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Saturday opening time' %>
+              <%= f.input :hrs_sat_e, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Saturday closing time' %>
+
+               <%= f.input :hrs_sun_s, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Sunday opening time' %>
+              <%= f.input :hrs_sun_e, collection: ['12:00am', '1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm'], label: 'Sunday closing time' %>
+
+        </div>
 
 
-<% end %>
+       <div class="col-md-12">
+          <%= f.input :ideal_candidate, label: 'Brief description of who this service is for'  %>
+          <%= f.input :goal_condition, label: 'Brief description of what this program or service does' %>
+          <%= f.input :candidate_requirements, label: 'Brief description of any program/ service requirements or restrinctions' %>
+
+          <%= f.input :prog_cost, label: 'Financial cost for the program (e.g. free, $20 session, etc.)'%>
+          <%= f.input :prog_hours, collection: 1...100, label: 'The number of hours the service/ program requires of the client per day or week or month or year'%>
+
+          <%= f.input :prog_hours_per_units, collection: ['day', 'week', 'month', 'year'], label: 'the units for the number of hours' %>
+
+          <%= f.input :length_of_prog, label: 'A sentence describing how long does your program/ service lasts or is available' %>     
+       </div>   
+  
+    
+          <%= f.input :organization_id, 
+            	input_html: { value: '@organization.id' }, 
+            	wrapper_html: { class: 'hidden' } %>
+         
+    
+    </div>
+
+
+  
+   <div class="col-md-12">
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div> 
+     </div> 
+    <% end %>
+   
+
+  

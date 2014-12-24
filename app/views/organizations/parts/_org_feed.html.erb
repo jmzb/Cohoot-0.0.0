@@ -1,0 +1,24 @@
+
+<div class="container-fluid">
+
+
+ <% if @campaigns %>
+  <% @campaigns.each do |campaign| %>
+	  <% if user_signed_in? %>
+		<div class="well">
+		  <%= campaign.content %> </br>
+		  by <%= link_to campaign.user.full_name, profile_page_path(campaign.user) %>, 
+		  <%= time_ago_in_words(campaign.created_at) %> ago
+		</div>	
+	  <% else %>
+	    <div class="well">
+	  	  <%= campaign.content %> </br>
+		  by <%= link_to campaign.user.organization.name, organization_path(campaign.user.organization) %>, 
+		  <%= time_ago_in_words(campaign.created_at) %> ago
+		</div>  
+	  <% end %>	
+  <% end %>	
+<% end %>	
+
+
+</div>

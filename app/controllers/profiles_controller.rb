@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
  	@user = User.find(params[:id])
   		if @user
-  			@organization = @user.organization
+  			@organization = @user.staff.organization
   			@campaigns = @user.campaigns.load
   			
         @follow_users = @user.follow_users.includes(:followed, :follower).all

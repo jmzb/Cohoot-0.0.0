@@ -2,13 +2,25 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable #:confirmable
 
   include ActiveModel::ForbiddenAttributesProtection  
+  has_one :staff
+  has_one :organizations, through: :staff
 
-  belongs_to :organization
+
+#possible way to build the relationship between users and programs... 
+  #has_many :program_teams                          #...might be a good place to use a class variable to scope?
+  #has_many :programs, through: :program_teams
+
+#another possible way to build the relationship between users and programs...
   has_many :programs, through: :organizations
+
+
+#to define a user's location... either go through organization, programs, or create a direct join table...?  
+  #failing
   has_many :locations, through: :organizations
+  
   has_many :campaigns
 
   #for following users
@@ -18,20 +30,18 @@ class User < ActiveRecord::Base
   has_many :reverse_user_rels, class_name: "FollowUser", foreign_key: "followed_id", dependent: :destroy
   has_many :followed_bys, through: :reverse_user_rels, source: :follower #this would be user in "userB follows user"
 
-  #for following organizations
+  # for following organizations, note: an organization cannot follow anyone-organization inherits followeds from staff
+  # when a user follows an organization the user follows posts from the org's posting staff
   # has_many :follow_orgs
-  # has_many :followed_orgs, through: :follow_orgs
-  # has_many :reverse_org_rel, foreign_key: "followed_id", class_name: "FollowOrg", dependent: :destroy
-  # has_many :followers_org_r, through: :reverse_org_rel, source: :follower_org
 
-  #for following programs
+  # for following programs, note: a program cannot follow anyone-program inherits followeds from staff
+  # when a user follows a program the user follows posts from the programs's posting staff
   # has_many :follow_progs
-  # has_many :followed_progs, through: :follow_progs
-  # has_many :reverse_prog_rel, foreign_key: "followed_id", class_name: "FollowProg", dependent: :destroy
-  # has_many :followers_prog_r, through: :reverse_prog_rel, source: :follower_prog
+ 
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  #validates_acceptance_of :terms_of_service
 
   def full_name
   	first_name + " " + last_name

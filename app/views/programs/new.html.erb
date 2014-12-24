@@ -1,6 +1,13 @@
 <%= render "/parts/mainnav" %>
-<h1>New program</h1>
 
-<%= render 'form' %>
+<div class="container-fluid">
+	<div class="row"> 
+		<div class="col-md-6">
 
-<%= link_to 'Back', programs_path %>
+			<h3>New program/ service at <%= @organization.name %> </h3>
+			<%= render 'form' %>
+			</br><%= link_to 'Back', programs_path %>
+
+    </div>
+	</div>
+</div>			
