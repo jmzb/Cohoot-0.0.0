@@ -81,6 +81,11 @@ class ProgramsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
       params.require(:program).permit(:prog_name, :prog_obj, 
-        :organization_id, :ideal_candidate, :initial_condition, :goal_condition, :next_step, :program_capacity)
+        :organization_id, :ideal_candidate, :goal_condition, :next_step, 
+            :hrs_mon_s, :hrs_mon_e, :hrs_tues_s, :hrs_tues_e, :hrs_wed_s, :hrs_wed_e, :hrs_thurs_s, :hrs_thurs_e,
+            :hrs_fri_s, :hrs_fri_e, :hrs_sat_s, :hrs_sat_e, :hrs_sun_s, :hrs_sun_e,
+            :candidate_requirements,  :prog_cost, :prog_hours, :prog_hours_per_units, :length_of_prog)
     end
 end
+  
+  
