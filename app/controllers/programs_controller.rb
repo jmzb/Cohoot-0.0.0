@@ -15,18 +15,21 @@ class ProgramsController < ApplicationController
         #@locations = @program.organization.locations.load
         @users = @program.users.load
         @campaigns = @program.campaigns.load
-        @organization = @program.organization
+        @organization = Organization.find_by(@program.organization_id)
   end
 
   # GET /programs/new
   def new
     @program = Program.new
       @user = current_user
-      @organization = @user.organization
+      @organization = @user.staff.organization
   end
 
   # GET /programs/1/edit
   def edit
+      @program = Program.find(params[:id])
+      @user = current_user
+      @organization = @user.staff.organization
   end
 
   # POST /programs
