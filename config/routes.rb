@@ -12,6 +12,9 @@ Beta1::Application.routes.draw do
   resources :follow_users
   resources :staffs
 
+  resources :results, only: [:index, :show]
+ 
+
   root :to => "search#index"
 
 devise_for :users, :skip => [:sessions]
@@ -24,10 +27,12 @@ devise_for :users, :skip => [:sessions]
   end
 
   get 'search', to: 'search#index', as: :search
+  
   get 'profile/:id', to: 'profiles#show', as: :profile_page
   get "profiles/show"
   get "search/index"
   get 'set_organization/:id', to: 'set_organization#index', as: :set_organization
+
 
   #DEVLOPMENT ROUTES
   

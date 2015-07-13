@@ -1,8 +1,10 @@
 <%= render "/parts/mainnav" %>
+
+<div class="row">
 <div class="container-fluid">
 	
 <!-- Begin Map & Details Header -->
-	<div class="row light-backgrouund">	
+<div class="row">	
 	<div class="container-fluid">         
 		<div class="col-md-2" >	
 	  	<div class="container-fluid">
@@ -15,14 +17,41 @@
 	  		<br><br><br>
   			<h1><%= @program.prog_name %> <br> 
   				<small> 
-  					<%= @organization.name %>
+  					<%= link_to @organization.name, @organization %>
   				</small>
-  			</h1> </br>
-  </div>
+  			</h1> 
+  		</br></br></br></br>
+   </div>
+   </div>
+   </div>
 
+  
+  			<div class="row">	
+  				<div class="col-md-3">
+						<div class="container-fluid">
+							<h3> Location </h3>
+								<p>
+									100 Peachtree Street NW, Suite 1500 <br>
+									Atlanta, GA 30303
+								</p>	
+						</div>
 
-				<div class="col-md-3 col-md-offset-4">
-					<div class="continer-fluid trans-overlay img-rounded">
+						<div class="container-fluid">
+						<h3> Hours </h3>
+							<p>
+									Monday: 9:00am - 5:00pm <br>
+									Tuesday: 9:00am - 5:00pm <br>
+									Wednesday: 9:00am - 5:00pm <br>
+									Thursday: 9:00am - 5:00pm <br>
+									Friday: 9:00am - 5:00pm <br>
+									Saturday: Closed <br>
+									Sunday: Closed <br>
+							</p>	
+						</div>
+					</div>
+
+				<div class="col-md-3">
+					<div class="continer-fluid">
 					<h3>Contact</h3>
 					<strong> phone: </strong> 1-800-for-info </br>
 					<strong> email: </strong> thisisall@mockups.com  </br></br>
@@ -30,9 +59,20 @@
 					<strong> Space available! </strong></br></br>
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   				Refer Now
-					</button>
+					</button> </br></br></br>
+				</div>
+			</div>
+			
 
-						<!-- Modal -->
+			<div class="col-md-4">
+   		a thing is here
+    	</div>
+
+	</div>
+  
+
+
+			<!-- Modal -->
 							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							  <div class="modal-dialog">
 							    <div class="modal-content">
@@ -77,8 +117,6 @@
 												  </ul>
 												</div>
 
-
-
 							       <br> <strong> Notes: </strong> <br>
 							        After you create your appointment we'll send you an email to confrim. When you come, please bring a valid ID with you. Thanks, we look forward to meeting you!
 
@@ -96,85 +134,43 @@
 			</div>			
 	    </div> 
 	 
-
-
-<div class="row">	
-	<div class="program-map-box">
-
-
-		<div class="col-md-9">
-			<iframe
-  			width="100%"
-  			height="500px"
-  			frameborder="-5" style="border:0"
-  			src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDJQhbquG-0AaxW8_R-02MbKVTkZ7uf-IQ&q=Georgia+Center+for+nonprofits+atlanta">
-			</iframe>
-		</div>	
-
-
-		<div class="col-md-3">
-			<div class="container-fluid">
-				<h3> Location </h3>
-					<p>
-						100 Peachtree Street NW, Suite 1500 <br>
-						Atlanta, GA 30303
-					</p>	
-			</div>
-
-			<div class="container-fluid">
-			<h3> Hours </h3>
-				<p>
-					
-						Monday: 9:00am - 5:00pm <br>
-						Tuesday: 9:00am - 5:00pm <br>
-						Wednesday: 9:00am - 5:00pm <br>
-						Thursday: 9:00am - 5:00pm <br>
-						Friday: 9:00am - 5:00pm <br>
-						Saturday: Closed <br>
-						Sunday: Closed <br>
-						
-				</p>	
-			</div>
-		</div>
-
-	</div>	
-</div>	
-	
-
-
+<!-- END Modal -->
 
 <!-- Begin Body Details -->
 
-  <div class="row">	
-	
+<div class="container-fluid">
 
-<div class="row light-backgrouund">  
-  <div class="col-md-4">
-  	<div class="continer-fluid fixed-overlay img-rounded">	
-			<h1> Who this is for </h1> <%= @program.ideal_candidate %> </br>
-			<strong> Requirements: </strong> You must live in the 30303 zip code
-		</div>
+	
+<div class="row">  
+    <div class="col-md-4">
+			 <h1> Who this is for </h1> <%= @program.ideal_candidate %> </br>
+			 <strong> Requirements: </strong> You must live in the 30303 zip code
+    </div>
   </div>
 
+<div class="row">
   <div class="col-md-4">
-  	<div class="continer-fluid fixed-overlay img-rounded">	
+  
     <h1> What it does </h1> 
     <strong> What this program helps you do: </strong> <%= @program.goal_condition %> </br>
-  </div>
-  </div>
+    </div>
 
+</div>
+
+
+<div class="row">
   <div class="col-md-4">
-  	<div class="continer-fluid fixed-overlay img-rounded">
+  
     <h1> What it takes </h1> 
     <strong> Cost: </strong> free </br>
     <strong> Hours you'll spend: </strong> About 5 hours a week </br>
     <strong> Length of program: </strong> 6 weeks  </br>
+
   </div>
-  </div>
+</div>
 
-
-</div> <!-- end row -->
-
+</div> 
+</br></br></br>
 
 <div class="container-fluid program-info">
 <ul class="nav nav-tabs nav-justified">
@@ -188,12 +184,25 @@
 </ul>
 </div>
 
+</br></br></br></br></br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br></br></br></br></br></br></br>
+
+<div class="program-map-box">
+<div class="col-md-12">
+			<iframe
+  			width="100%"
+  			height="500px"
+  			frameborder="-5" style="border:0"
+  			src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDJQhbquG-0AaxW8_R-02MbKVTkZ7uf-IQ&q=Georgia+Center+for+nonprofits+atlanta">
+			</iframe>
+		</div>	
+</div>		
 
 </br></br></br></br></br></br></br></br></br></br></br></br>
 
 
 
-
+</div>
 </div>
 </div>
 

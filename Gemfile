@@ -26,19 +26,12 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
 gem 'bootstrap-sass', '~> 3.1.1'
-
 gem 'simple_form'
-
 gem 'devise'
-
 gem 'nestive', '~> 0.5'
-
 gem 'state_machine'
-
 gem 'draper', '~> 1.3'
-
 gem "js-routes"
 
 # adds data migration functionality to rake
@@ -48,9 +41,6 @@ gem 'data_migrate'
 gem 'foreigner'
 gem 'immigrant'
 gem 'sqlserver-foreigner'
-
-#a gem to help with testing mailers, not implemented
-gem 'mailcatcher'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -67,10 +57,20 @@ group :test do
   #gem 'launchy'
 end
 
-group :development, :test do
+group :development do
   #gem 'factory_girl_rails'
+
+  #a gem to help with testing mailers, not implemented
+  gem 'mailcatcher'
 end
 
+
+#elasticsearch gems
+gem 'elasticsearch'
+gem 'elasticsearch-extensions'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
+gem 'chewy'
 
 
 

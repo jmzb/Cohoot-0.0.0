@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class ResultsController < ApplicationController
   
 
 
@@ -10,7 +10,9 @@ class SearchController < ApplicationController
 
     @search = DemoSearch.new
     @results = @search.search(params[:q])
-  
+    @prog_org = Organization.find_by(params[:id]) #this might not actually work, could be pulling current_user org id
+   # @org = Organization.load(params[:q]).records
+
 
     #not sure about this rescue code!
     rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
@@ -28,6 +30,7 @@ class SearchController < ApplicationController
 	  	@search = DemoSearch.new
 	  	@results = @search.search(params[:q])
   		@program = Program.load(params[:q]).records
+      @org = Organization.load(params[:q]).records
 
 	  	#not sure about this rescue code!
 	  	rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
