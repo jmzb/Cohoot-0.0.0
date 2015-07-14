@@ -70,11 +70,20 @@ define_type Program do
 
 
 define_type Organization do
-  field :name, index: 'analyzed', analyzer: 'basic'
+  field :name, type: 'multi_field' do
+      field :name, index: 'analyzed', analyzer: 'basic'
+      field :sorted, index: 'analyzed', analyzer: 'sorted'
+    end
+
   field :content, index: 'analyzed', analyzer: 'basic'
   field :website, index: 'analyzed', analyzer: 'basic'
   field :history, index: 'analyzed', analyzer: 'basic'
-  field :tagline, index: 'analyzed', analyzer: 'basic'
+
+  field :tagline, type: 'multi_field' do
+    field :name, index: 'analyzed', analyzer: 'basic'
+    field :sorted, index: 'analyzed', analyzer: 'sorted'
+  end  
+
 end
 
 define_type Campaign do
