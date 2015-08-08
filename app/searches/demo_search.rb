@@ -1,4 +1,5 @@
 class DemoSearch
+#DemoIndex.import
 
 SORT = {prog_name: {'prog_name.sorted' => :asc}, relevance: :_score} #need to fully implement sorting
 
@@ -7,7 +8,7 @@ SORT = {prog_name: {'prog_name.sorted' => :asc}, relevance: :_score} #need to fu
   end
 
   def search(query)
-   [query_string(query)].compact.reduce(:merge)
+   [ match_all, query_string(query)].compact.reduce(:merge)
   end
 
 # Using query_string advanced query for the main query input
@@ -17,12 +18,26 @@ SORT = {prog_name: {'prog_name.sorted' => :asc}, relevance: :_score} #need to fu
                    :ideal_candidate, 
                    :goal_condition, 
                    :candidate_requirements, 
-                   :prog_obj, 
-                   :name,
-                   :content],
+                   :prog_obj,
+                   :next_step
+                  ],
                                query: query, 
-                               default_operator: 'and'}) 
+                               default_operator: 'and',
+                               fuzziness: 'auto',
+                               phrase_slop: '5'
+                               })
+
   end
+
+  def match_all
+    index.filter{ match_all }.filter_mode('10%')
+  end
+
+
+ 
+#def wildcard(query)
+#    index.filter(wildcard: query)
+#end  
 
 end
 

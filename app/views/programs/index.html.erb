@@ -6,7 +6,7 @@
     <tr>
       <th>Prog name</th>
       <th>Prog obj</th>
-      <th></th>
+      <th> </th>
       <th></th>
       <th></th>
     </tr>
@@ -15,7 +15,7 @@
   <tbody>
     <% @programs.each do |program| %>
       <tr>
-        <td><%= program.prog_name %></td>
+        <td><%= program.prog_name %> at </td>
         <td><%= program.prog_obj %></td>
         <td><%= link_to 'Show', program %></td>
         <td><%= link_to 'Edit', edit_program_path(program) %></td>

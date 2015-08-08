@@ -1,24 +1,56 @@
 class DemoIndex < Chewy::Index
 
+
 settings analysis: {
+    filter: {
+        english_keywords: {
+          type:  'keyword_marker', 
+          keywords:   []
+        },
+        english_stemmer: {
+          type:       'stemmer',
+          language:   'english' 
+        },
+        english_possessive_stemmer: {
+          type:       'stemmer',
+          language:   'possessive_english'
+        }
+      },
+
     analyzer: {
       basic: {
-        tokenizer: 'standard',
-        filter: ['lowercase', 'asciifolding']
+        type: 'custom',
+        tokenizer: 'my_edgeNGram',
+        filter: [ 'lowercase', 
+                  'asciifolding', 
+                  'kstem',
+                  'english_keywords',
+                  'english_stemmer',
+                  'english_possessive_stemmer'
+                ]
       },
       sorted: {
         tokenizer: 'keyword',
-        filter: ['lowercase', 'asciifolding']
+        filter: ['lowercase', 'asciifolding', 'kstem']
       },
       description: {
       	tokenizer: 'classic',
-      	filter: ['lowercase', 'asciifolding']
-      }
-    }
+      	filter: ['lowercase', 'asciifolding', 'kstem']
+      }  
+    },
+
+    tokenizer: {
+        my_edgeNGram: {
+            type: ['edgeNGram', 'standard', 'classic', 'keyword', 'whitespace'],
+            min_gram: '1',
+            max_gram: '5',
+            token_chars: [ 'letter', 'digit']
+        }
+     }
+
   }
 
 define_type Program do
-
     field :prog_name, type: 'multi_field' do
     	field :prog_name, index: 'analyzed', analyzer: 'basic'
     	field :sorted, index: 'analyzed', analyzer: 'sorted'

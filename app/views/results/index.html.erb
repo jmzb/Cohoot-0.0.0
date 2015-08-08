@@ -20,7 +20,7 @@
 </br></br></br>
  	<div class="container-fluid">
 	<div class="row">
-
+<!--
     <div class="col-lg-3">
       People
     </div>
@@ -36,14 +36,17 @@
       <%# end %>
 
     </div>
+ -->   
 
-    <div class="col-lg-3">
-      Programs </br> </br>
+    <div class="col-lg-6 col-lg-offset-3">
+      <h2> Programs near Atlanta</h2> </br> </br>
       <% @results.each do |r| %>
-           <%= link_to r.prog_name, program_path(r.id) %> at <%= link_to @prog_org.name, 
-              organization_path(@prog_org.id) %></br>
-           What we do: <%= r.prog_obj%> </br>
-           How to connect: <%= r.next_step %> </br></br>
+      <div class="well">
+          <h4> <%= link_to r.prog_name, program_path(r.id) %> at <%= link_to @prog_org.name, 
+              organization_path(@prog_org.id) %> </h4></br>
+          <b> What we do: </b> <%= r.prog_obj%> </br>
+          <b> How to connect: </b> <%= r.next_step %> </br></br>
+      </div>     
       <% end %>
     </div>
 	</div>
